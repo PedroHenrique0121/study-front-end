@@ -23,6 +23,7 @@ import { DisciplinaService } from './disciplina.service';
 import { DisciplinasModule } from './disciplinas/disciplinas.module';
 import { AssuntosModule } from './assuntos/assuntos.module';
 import { MatMenuModule } from '@angular/material/menu';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { MatMenuModule } from '@angular/material/menu';
     SidebarComponent,
     NavComponent,
     LayouteComponent,
+   
  
   ],
   imports: [

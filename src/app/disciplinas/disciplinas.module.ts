@@ -15,10 +15,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { DisciplinaService } from '../disciplina.service';
+
 @NgModule({
   declarations: [DisciplinaCadastroComponent,
     DisciplinaListaComponent,
-    DisciplinaEdicaoComponent],
+    DisciplinaEdicaoComponent,
+    
+  ],
   imports: [
     CommonModule,
     DisciplinasRoutingModule,
@@ -36,7 +39,10 @@ import { DisciplinaService } from '../disciplina.service';
   ],
   exports:[
     DisciplinaCadastroComponent,
-    DisciplinaListaComponent
+    DisciplinaListaComponent,
+   
+  
+   
   ],
   providers:[
     DisciplinaService

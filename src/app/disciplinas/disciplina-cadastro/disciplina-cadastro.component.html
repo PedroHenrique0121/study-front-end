@@ -1,6 +1,8 @@
 <mat-card>
-    <div class="container">
 
+
+
+    <div class="container">
         <form [formGroup]="formulario" #formDir="ngForm" class="example-form" (ngSubmit)="onSubmit()">
 
             <mat-form-field class="example-full-width" appearance="outline">
@@ -15,8 +17,9 @@
                     Disciplina is <strong>minLength 3 caracteres</strong>
                 </mat-error>
             </mat-form-field>
-            <button mat-raised-button [ngStyle]="{marginRight:'10px', marginBottom:'4px'}" color="primary">Cadastrar</button>
-            <button mat-button  type="button" color="primary" (click)="listar()">Disciplinas</button>
+            <button mat-raised-button [ngStyle]="{marginRight:'10px', marginBottom:'4px'}"
+                color="primary">Cadastrar</button>
+            <button mat-button type="button" color="primary" (click)="listar()">Disciplinas</button>
 
 
             <!-- <mat-form-field class="example-full-width" appearance="fill">
@@ -26,4 +29,5 @@
 
         </form>
     </div>
+
 </mat-card>

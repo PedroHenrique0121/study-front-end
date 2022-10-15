@@ -1,0 +1,41 @@
+.container {
+
+
+    width: 500px;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .example-form {
+    min-width: 500px;
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  @media (max-width: 585px) {
+    .container {
+      width: 300px;
+      min-width: 300px;
+      max-width: 80vh;
+      display: flex;
+      justify-content: center;
+  
+    }
+  
+    .example-form {
+      min-width: 300px;
+      max-width: 100%;
+      width: 100%;
+  
+    }
+  
+    .example-full-width {
+      width: 100%;
+    }
+  
+  }

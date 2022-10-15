@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { DialogComponent } from 'src/app/componentes/dialog/dialog.component';
 import { DisciplinaService } from 'src/app/disciplina.service';
 import { Disciplina } from '../Disciplina';
+
 @Component({
   selector: 'app-disciplina-cadastro',
   templateUrl: './disciplina-cadastro.component.html',
