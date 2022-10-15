@@ -22,6 +22,7 @@ import { CommonModule } from '@angular/common';
 import { DisciplinaService } from './disciplina.service';
 import { DisciplinasModule } from './disciplinas/disciplinas.module';
 import { AssuntosModule } from './assuntos/assuntos.module';
+import { MatMenuModule } from '@angular/material/menu';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +46,7 @@ import { AssuntosModule } from './assuntos/assuntos.module';
     MatSidenavModule,
     MatButtonModule,
     MatDialogModule,
+    MatMenuModule,
 
     DisciplinasModule,
     AssuntosModule

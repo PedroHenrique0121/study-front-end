@@ -1,16 +1,26 @@
 <mat-toolbar color="">
-    <button mat-icon-button class="example-icon" (click)="toogleSide()" aria-label="Example icon-button with menu icon">
+  
+  <div>
+    <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
       <mat-icon>menu</mat-icon>
-    </button>
-    <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon"  aria-label="Example icon-button with menu icon">
-      <mat-icon>balance</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button at-icon-button mat-menu-item  routerLink="/disciplinas/cadastro">
+        <mat-icon>edit</mat-icon> Cadastrar Diciplinas
     </button>
    
-    <span class="example-spacer"></span>
-   
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
-    </button>
-  </mat-toolbar>
+</mat-menu>
+  
+  
+</div>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>balance</mat-icon>
+  </button>
 
+  <span class="example-spacer"></span>
+
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>
