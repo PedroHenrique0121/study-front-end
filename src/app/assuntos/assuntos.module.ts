@@ -31,6 +31,9 @@ import { AssuntoCadastrosComponent } from './assunto-cadastros/assunto-cadastros
     MatFormFieldModule,
     MatPaginatorModule,
     MatProgressBarModule
+  ],
+  exports: [
+    AssuntoCadastrosComponent
   ]
 })
 export class AssuntosModule { }
