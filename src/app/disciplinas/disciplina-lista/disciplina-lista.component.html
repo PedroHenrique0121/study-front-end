@@ -1,0 +1,37 @@
+<div class="layoute">
+
+    <div class="icon">
+        <img alt="Brastra.gif (4376 bytes)" [ngStyle]="{marginTop:'10px'}" height="82"
+            src="https://www.planalto.gov.br/ccivil_03/decreto/Brastra.gif" width="74">
+    </div>
+
+    <mat-progress-bar  *ngIf="!disciplinaPage" mode="indeterminate"></mat-progress-bar>
+
+    
+    <div class="disciplinas" *ngFor="let disciplina of disciplinas">
+
+        <h1>
+            <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
+                <mat-icon>pending</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button at-icon-button mat-menu-item (click)="editar(disciplina)">
+                    <mat-icon>edit</mat-icon> Editar
+                </button>
+                <button at-icon-button mat-menu-item (click)="excluir(disciplina)">
+                    <mat-icon>delete</mat-icon> Excluir
+                </button>
+            </mat-menu>
+            {{disciplina.descricao}}
+
+        </h1>
+
+    </div>
+
+    <mat-paginator [length]="disciplinaPage?disciplinaPage.totalElements: 7" [disabled]=""
+        [pageSizeOptions]="[7, 10, (disciplinaPage?disciplinaPage.totalElements: 30 /2)]" (page)="pegaMudancaPaginacao($event)"
+        aria-label="Select page">
+    </mat-paginator>
+</div>
+
+<!-- pending -->

@@ -1,0 +1,14 @@
+<div class="centralizar">
+  <h1>
+    <mat-icon [ngStyle]="{width:'30px', heigth:'30px'}">{{data.icon}}</mat-icon> 
+  </h1>
+</div>
+<div class="centralizar">
+  <div mat-dialog-content>
+    <h3>{{data.msg}}</h3>
+  </div>
+</div>
+
+<div mat-dialog-actions class="centralizar">
+  <button (click)="limpar()" mat-button mat-dialog-close>Ok</button>
+</div>
