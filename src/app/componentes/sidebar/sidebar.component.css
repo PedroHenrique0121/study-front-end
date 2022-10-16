@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
 
 .side {
@@ -9,7 +10,7 @@
 
     display: none;
     height: 100%;
-  
+
 
 }
 
@@ -21,7 +22,10 @@
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-   background-color: #f5f5f5;
+    background-color: #f5f5f5;
+    overflow-y: scroll;
+
+
 }
 
 
@@ -50,16 +54,17 @@
 
     display: flex;
     margin-top: 40px;
-
     width: 250px;
     height: 300px;
-
     flex-direction: column;
     align-items: center;
 
+
 }
 
-.containerItens .botoesMenu {
+
+
+.containerItens li {
 
     display: flex;
 
@@ -67,41 +72,42 @@
     width: 100%;
     height: 30px;
     align-items: center;
-    justify-content: center;
-    padding: 25px;
+    justify-content: flex-start;
+    padding-bottom: 5px;
+    padding-top: 5px;
 
     cursor: pointer;
-    border-radius: 4px;
-}
-
-
-.containerItens .botoesMenu:hover {
-    border-bottom: 1px solid var(--corGeralLiterals);
 
 }
 
-/* .containerItens li a {
+.containerItens li:hover {
+    background-color: #f5f5f5;
+}
+
+
+
+
+.containerItens li a {
     display: flex;
-   
     text-decoration: none;
     color: var(--corGeralLiterals);
-} */
+}
 
-.footerMenu{
+/* .footerMenu{
 
     width: 270px;
     height: 20vh;
     display: flex;
-    margin-top: 40% ;
+    margin-bottom: 10% ;
 
     align-items: center;
     justify-content: center;
     flex-direction: column;
  
     color: var(--corGeralLiterals);
-}
+} */
 
-.footerMenu button{
+.footerMenu button {
     width: 100%;
     display: flex;
     align-items: center;
@@ -113,32 +119,36 @@
 @media (max-width: 585px) {
 
     .side.s {
-        display: flex;
-        position: fixed;
-        margin: 0 auto;
+        width: 100vw;
+    }
 
-   
+        /* display: flex;
+        position: fixed;
+      
         justify-content: center;
+        flex-direction: column;
         align-items: center;
         width: 90vw;
         height: 90vh;
         border-radius: 15px;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+        scroll-margin-block-start: initial; */
 
+        
+       
 
+    
+
+   /* .itens {
+        display: flex;
+        width: 250px;
+        height: 30px;
+        padding: 25px;
+        cursor: pointer;
     }
 
-    /* .backdrop.b{
-
-        display: flex;
-        width: 100vw;
-        height: 100vh;
-        position: fixed;
-        top: 0;
-        background: rgba(0, 0, 0, 0.9);
-        background: #00000080;
-        align-items: center;
-        justify-content: center;
-    } */
+    
     .containerModal.c {
 
         display: flex;
@@ -152,7 +162,7 @@
         justify-content: center;
     }
 
-    
+
 
     .buttonClosedSide {
         display: flex;
@@ -162,32 +172,72 @@
         left: 0;
     }
 
-    .containerModal.c  .containerItens {
+    .containerModal.c .containerItens {
 
-       margin-top: 0;
-        display: block;
+        margin-top: 0;
+        display: flex;
         justify-content: center;
         align-items: center;
-      
+        width: 270px;
+        height: 400px;
+        padding-top: 25px;
+       
         
-    }
-    .footerMenu{
 
-     margin-bottom: 0;
-    
-     height: 40px;
-    width: auto;
-     display: flex;
-   
-    
-     
+
+    } */
+
+    /* .footerMenu {
+
+        margin-bottom: 0;
+
+        height: 40px;
+        width: auto;
+        display: flex;
+
+
+
 
     }
-    .footerMenu button{
+
+    .footerMenu button {
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
-    }
+    } */
 
+
+}
+
+.mat-expansion-panel-header {
+    height: 48px;
+    width: 250px;
+    border-bottom: 10px;
+}
+
+.mat-accordion .mat-expansion-panel:last-of-type {
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    margin-bottom: 12px;
+}
+
+.mat-expansion-panel-body {
+    padding: 0 0px 0px;
+}
+
+.mat-expansion-panel {}
+
+.mat-card {
+    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+    position: relative;
+    /* padding: 16px; */
+    border-radius: 4px;
+    padding: 0;
+}
+
+.mat-expansion-panel-header.mat-expanded {
+    height: 50px;
+    width: 250px;
 }

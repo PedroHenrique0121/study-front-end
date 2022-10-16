@@ -19,10 +19,11 @@ import { CommonModule } from '@angular/common';
 import { AssuntosModule } from './assuntos/assuntos.module';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatTreeModule} from '@angular/material/tree';
-
+import {MatExpansionModule} from '@angular/material/expansion';
 
 import { DisciplinaService } from './disciplina.service';
 import { DisciplinasModule } from './disciplinas/disciplinas.module';
+import { MatCardModule } from '@angular/material/card';
 
 
 
@@ -50,6 +51,8 @@ import { DisciplinasModule } from './disciplinas/disciplinas.module';
     MatDialogModule,
     MatMenuModule,
     MatTreeModule,
+    MatExpansionModule,
+    MatCardModule,
     
    
 

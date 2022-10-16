@@ -1,3 +1,7 @@
 html, body { margin:0; height: 100%;     font-family: Arial;}
 
-
+.mat-body, .mat-body-1, .mat-typography .mat-body, .mat-typography .mat-body-1, .mat-typography {
+    font: 400 14px/20px Arial;
+    letter-spacing: normal;
+    font-family: Arial;
+}

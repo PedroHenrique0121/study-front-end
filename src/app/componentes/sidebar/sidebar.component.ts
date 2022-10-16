@@ -11,6 +11,7 @@ export class SidebarComponent {
    @Input() drawer!: MatDrawer
    @Input() 
    sidenav!: MatSidenav;
+   panelOpenState = false;
   constructor() { }
 
   // fechar(){

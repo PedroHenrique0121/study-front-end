@@ -1,5 +1,6 @@
 <div class="containerModal c">
     <div color="primary" class="side s">
+
         <div class="buttonClosedSide">
             <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
                 (click)="sidenav.close()">
@@ -8,7 +9,124 @@
         </div>
         <div class="containerItens">
 
-            <button  class="botoesMenu" mat-button [matMenuTriggerFor]="cadastros">Cadastros</button>
+           
+            <mat-accordion >
+                <mat-expansion-panel (opened)="panelOpenState = true" aria-expanded="true"
+                    (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <button mat-icon-button  >
+                                <mat-icon>assignment_add</mat-icon>
+                            </button>
+                            <span>Cadastros</span>
+                        </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+
+                    <li routerLink="/disciplinas/cadastro" (click)="sidenav.close()">
+                        <button mat-icon-button  >
+                            <mat-icon>format_list_bulleted_add</mat-icon>
+                        </button>
+                        <span>Disciplinas</span>
+                    </li>
+                    <li routerLink="/assuntos/cadastro" (click)="sidenav.close()">
+                        <button mat-icon-button  >
+                            <mat-icon>format_list_bulleted_add</mat-icon>
+                        </button>
+                        <span>Assuntos</span>
+                    </li>
+                </mat-expansion-panel>
+            </mat-accordion>
+
+            <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Cadastros
+                        </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+
+                    <li><a href="">Alguma coisa</a></li>
+                </mat-expansion-panel>
+            </mat-accordion>
+
+            <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Filtros
+                        </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+
+                    <li><a href="">Alguma coisa</a></li>
+                </mat-expansion-panel>
+            </mat-accordion>
+
+            <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Filtros
+                        </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+
+                    <li><a href="">Alguma coisa</a></li>
+                </mat-expansion-panel>
+            </mat-accordion>
+
+            <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Filtros
+                        </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+
+                    <li><a href="">Alguma coisa</a></li>
+                </mat-expansion-panel>
+            </mat-accordion>
+            <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Filtros
+                        </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+
+                    <li><a href="">Alguma coisa</a></li>
+                </mat-expansion-panel>
+            </mat-accordion>
+            <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Filtros
+                        </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+
+                    <li><a href="">Alguma coisa</a></li>
+                </mat-expansion-panel>
+            </mat-accordion>
+            <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Filtros
+                        </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+
+                    <li><a href="">Alguma coisa</a></li>
+                </mat-expansion-panel>
+            </mat-accordion>
+
+            <!-- <button  class="botoesMenu" mat-button [matMenuTriggerFor]="cadastros">Cadastros</button>
             <mat-menu #cadastros="matMenu">
                 <button mat-menu-item>Item 1</button>
                 <button mat-menu-item>Item 2</button>
@@ -17,7 +135,7 @@
             <button  class="botoesMenu" mat-button [matMenuTriggerFor]="animals">Filtros</button>
             <mat-menu #animals="matMenu">
                 <button mat-menu-item>Item 1</button>
-            </mat-menu>
+            </mat-menu> -->
 
             <!-- <li><a >
                     
@@ -27,7 +145,7 @@
             <li><a href="">Alguma coisa</a></li>
             <li><a href="">Alguma coisa</a></li> -->
 
-            <div>
+            <!-- <div>
 
                 <div class="footerMenu">
                     <button mat-icon-button class="example-icon">
@@ -35,8 +153,8 @@
                     </button>
                 </div>
 
-            </div>
-
+            </div> -->
+        
         </div>
 
     </div>

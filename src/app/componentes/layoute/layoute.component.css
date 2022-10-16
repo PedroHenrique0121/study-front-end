@@ -39,3 +39,6 @@ main {
     justify-content: center;
 }
 
+.example-sidenav {
+    height: calc(100vh - 64px);
+  }
