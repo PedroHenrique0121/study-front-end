@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatDrawer } from '@angular/material/sidenav';
+import { MatDrawer, MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,6 +9,8 @@ import { MatDrawer } from '@angular/material/sidenav';
 export class SidebarComponent {
 
    @Input() drawer!: MatDrawer
+   @Input() 
+   sidenav!: MatSidenav;
   constructor() { }
 
   // fechar(){

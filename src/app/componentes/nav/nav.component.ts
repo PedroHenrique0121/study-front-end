@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
-import { MatDrawer } from '@angular/material/sidenav';
+import { MatDrawer, MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-nav',
@@ -11,30 +11,28 @@ export class NavComponent implements OnInit {
 
   @Input() 
   drawer!: MatDrawer;
-
+  @Input() 
+  sidenav!: MatSidenav;
   constructor() { }
 
   ngOnInit(): void {
   }
-  toogleSide() {
 
-    const container = document.querySelector(".containerModal")
-    container?.classList.toggle("c")
+  // toogleSide() {
 
-    const sidebar = document.querySelector(".side")
-    sidebar?.classList.toggle("s")
+  //   const container = document.querySelector(".containerModal")
+  //   container?.classList.toggle("c")
 
-    const back = document.querySelector(".backdrop")
-    back?.classList.toggle("b")
+  //   const sidebar = document.querySelector(".side")
+  //   sidebar?.classList.toggle("s")
+
+  //   const back = document.querySelector(".backdrop")
+  //   back?.classList.toggle("b")
     
-
-   
-
-    
-    // const mat = new MatDialogConfig();
-    // mat.disableClose= true;
-    // this.dialog.open(DialogComponent,mat)
-  }
+  //   // const mat = new MatDialogConfig();
+  //   // mat.disableClose= true;
+  //   // this.dialog.open(DialogComponent,mat)
+  // }
   
 
 }

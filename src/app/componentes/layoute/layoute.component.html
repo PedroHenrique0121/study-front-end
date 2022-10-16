@@ -1,4 +1,4 @@
-<app-nav [drawer]="drawer"></app-nav>
+<!-- <app-nav [drawer]="drawer"></app-nav>
 <mat-drawer-container class="example-container" autosize>
     <mat-drawer #drawer class="example-sidenav" mode="side">
         <app-sidebar [drawer]="drawer"></app-sidebar>
@@ -11,8 +11,17 @@
         </main>
     </div>
 
-</mat-drawer-container>
-<!-- <div class="container">
-  
-    
-</div> -->
+</mat-drawer-container> -->
+<app-nav [sidenav]="sidenav"></app-nav>
+<mat-sidenav-container class="example-container" (backdropClick)="close('backdrop')" >
+  <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>
+    <app-sidebar [sidenav]="sidenav">></app-sidebar>
+  </mat-sidenav>
+
+  <div class="example-sidenav-content">
+
+    <main>
+        <router-outlet></router-outlet>
+    </main>
+</div>
+</mat-sidenav-container>

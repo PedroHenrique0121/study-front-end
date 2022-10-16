@@ -16,13 +16,14 @@ import { NavComponent } from './componentes/nav/nav.component';
 import { LayouteComponent } from './componentes/layoute/layoute.component'
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-
+import { AssuntosModule } from './assuntos/assuntos.module';
+import { MatMenuModule } from '@angular/material/menu';
+import {MatTreeModule} from '@angular/material/tree';
 
 
 import { DisciplinaService } from './disciplina.service';
 import { DisciplinasModule } from './disciplinas/disciplinas.module';
-import { AssuntosModule } from './assuntos/assuntos.module';
-import { MatMenuModule } from '@angular/material/menu';
+
 
 
 @NgModule({
@@ -40,9 +41,7 @@ import { MatMenuModule } from '@angular/material/menu';
     AppRoutingModule,
     HttpClientModule,
     CommonModule,
-
     BrowserAnimationsModule,
-    
     MatSliderModule,
     MatToolbarModule,
     MatIconModule,
@@ -50,6 +49,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatButtonModule,
     MatDialogModule,
     MatMenuModule,
+    MatTreeModule,
+    
    
 
     DisciplinasModule,

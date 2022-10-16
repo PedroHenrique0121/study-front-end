@@ -1,18 +1,32 @@
 <div class="containerModal c">
-
-
     <div color="primary" class="side s">
         <div class="buttonClosedSide">
-            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.close()">
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+                (click)="sidenav.close()">
                 <mat-icon>close</mat-icon>
             </button>
         </div>
         <div class="containerItens">
+
+            <button  class="botoesMenu" mat-button [matMenuTriggerFor]="cadastros">Cadastros</button>
+            <mat-menu #cadastros="matMenu">
+                <button mat-menu-item>Item 1</button>
+                <button mat-menu-item>Item 2</button>
+            </mat-menu>
+
+            <button  class="botoesMenu" mat-button [matMenuTriggerFor]="animals">Filtros</button>
+            <mat-menu #animals="matMenu">
+                <button mat-menu-item>Item 1</button>
+            </mat-menu>
+
+            <!-- <li><a >
+                    
+                </a></li>
             <li><a href="">Alguma coisa</a></li>
             <li><a href="">Alguma coisa</a></li>
             <li><a href="">Alguma coisa</a></li>
-            <li><a href="">Alguma coisa</a></li>
-            <li><a href="">Alguma coisa</a></li>
+            <li><a href="">Alguma coisa</a></li> -->
+
             <div>
 
                 <div class="footerMenu">
@@ -24,3 +38,6 @@
             </div>
 
         </div>
+
+    </div>
+</div>
