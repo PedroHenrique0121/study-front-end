@@ -1,11 +1,9 @@
 .container {
     margin: 0;
     display: flex;
-
     width: 100%;
     align-items: center;
     justify-content: center;
-
 
 }
 
@@ -24,3 +22,20 @@ main {
     align-items: center;
     justify-content: center;
 }
+
+
+/* material sidebar */
+.example-container {
+    width: 100%;
+    height: calc(100% - 64px);
+
+}
+
+.example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.example-sidenav {}

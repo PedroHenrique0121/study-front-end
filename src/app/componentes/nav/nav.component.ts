@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-nav',
@@ -8,7 +9,8 @@ import { MatMenuTrigger } from '@angular/material/menu';
 })
 export class NavComponent implements OnInit {
 
-  @ViewChild('menuTrigger') menuTrigger!: MatMenuTrigger;
+  @Input() 
+  drawer!: MatDrawer;
 
   constructor() { }
 

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./layoute.component.css']
 })
 export class LayouteComponent implements OnInit {
-
+  showFiller = false;
   constructor() { }
 
   ngOnInit(): void {

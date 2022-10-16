@@ -1,7 +1,18 @@
-<app-nav></app-nav>
-<div class="container">
-    <!-- <app-sidebar></app-sidebar> -->
-    <main>
+<app-nav [drawer]="drawer"></app-nav>
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+        <app-sidebar [drawer]="drawer"></app-sidebar>
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
+
+        <main>
             <router-outlet></router-outlet>
-    </main>
-</div>
+        </main>
+    </div>
+
+</mat-drawer-container>
+<!-- <div class="container">
+  
+    
+</div> -->
