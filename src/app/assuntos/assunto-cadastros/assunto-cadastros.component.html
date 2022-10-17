@@ -1,1 +1,46 @@
+<app-card-title title="Cadastro de Assuntos"> </app-card-title>
+<mat-card>
 
+    <div class="container">
+        <form [formGroup]="formulario" #formDir="ngForm" class="example-form" (ngSubmit)="onSubmit()">
+
+            <h4>mat select</h4>
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Selecione uma Diciplina</mat-label>
+                <mat-select formControlName="disciplinaId" [(ngModel)]="assunto.disciplinaId" required>
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let disciplina of disciplinas"    [value]="disciplina?.id">
+                        {{disciplina.descricao}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="disciplinaId?.hasError('required')">Please choose an disciplina</mat-error>
+                <mat-hint>{{disciplinaId?.value?.sound}}</mat-hint>
+            </mat-form-field>
+
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label> Assunto </mat-label>
+                <input matInput formControlName="descricao" [(ngModel)]="assunto.descricao"
+                    placeholder="Informe a descrição do assunto">
+
+                <mat-error *ngIf="descricao?.hasError('required') ">
+                    Assunto is <strong>required</strong>
+                </mat-error>
+                <mat-error *ngIf="descricao?.hasError('minlength') ">
+                    Assunto is <strong>minLength 3 caracteres</strong>
+                </mat-error>
+            </mat-form-field>
+            <button mat-raised-button [ngStyle]="{marginRight:'10px', marginBottom:'4px'}"
+                color="primary">Cadastrar</button>
+            <button mat-button type="button" color="primary" (click)="listar()">Assuntos</button>
+
+
+            <!-- <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Leave a comment</mat-label>
+                <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+            </mat-form-field> -->
+
+        </form>
+    </div>
+
+</mat-card>

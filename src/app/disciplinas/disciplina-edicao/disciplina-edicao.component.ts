@@ -4,7 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DialogComponent, DialogData } from 'src/app/componentes/dialog/dialog.component';
-import { DisciplinaService } from 'src/app/disciplina.service';
+import { DisciplinaService } from 'src/app/services/disciplina.service';
 import { Disciplina } from '../Disciplina';
 
 export class D {

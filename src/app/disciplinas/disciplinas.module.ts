@@ -14,12 +14,16 @@ import { DisciplinaEdicaoComponent } from './disciplina-edicao/disciplina-edicao
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import { DisciplinaService } from '../disciplina.service';
+import { DisciplinaService } from '../services/disciplina.service';
+import { CardTitleComponent } from '../componentes/card-title/card-title.component';
+import { ComponentesModule } from '../componentes/componentes.module';
 
 @NgModule({
   declarations: [DisciplinaCadastroComponent,
     DisciplinaListaComponent,
     DisciplinaEdicaoComponent,
+   
+    
     
   ],
   imports: [
@@ -34,15 +38,16 @@ import { DisciplinaService } from '../disciplina.service';
     MatMenuModule,
     MatFormFieldModule,
     MatPaginatorModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    ComponentesModule,
     
   ],
   exports:[
     DisciplinaCadastroComponent,
     DisciplinaListaComponent,
    
+    
   
-   
   ],
   providers:[
     DisciplinaService

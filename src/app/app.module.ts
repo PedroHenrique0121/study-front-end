@@ -21,9 +21,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatExpansionModule} from '@angular/material/expansion';
 
-import { DisciplinaService } from './disciplina.service';
+import { DisciplinaService } from './services/disciplina.service';
 import { DisciplinasModule } from './disciplinas/disciplinas.module';
 import { MatCardModule } from '@angular/material/card';
+import { CardTitleComponent } from './componentes/card-title/card-title.component';
 
 
 
@@ -34,8 +35,6 @@ import { MatCardModule } from '@angular/material/card';
     SidebarComponent,
     NavComponent,
     LayouteComponent,
-   
- 
   ],
   imports: [
     BrowserModule,
@@ -54,8 +53,6 @@ import { MatCardModule } from '@angular/material/card';
     MatExpansionModule,
     MatCardModule,
     
-   
-
     DisciplinasModule,
     AssuntosModule
   ],

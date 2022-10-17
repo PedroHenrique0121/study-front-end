@@ -5,7 +5,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 import { Router } from '@angular/router';
 import { DialogComponent } from 'src/app/componentes/dialog/dialog.component';
-import { DisciplinaService } from 'src/app/disciplina.service';
+import { DisciplinaService } from 'src/app/services/disciplina.service';
 import { Disciplina } from '../Disciplina';
 
 @Component({

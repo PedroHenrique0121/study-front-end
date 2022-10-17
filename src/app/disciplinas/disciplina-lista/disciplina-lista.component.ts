@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DisciplinaService } from 'src/app/disciplina.service';
+import { DisciplinaService } from 'src/app/services/disciplina.service';
 import { Disciplina, DisciplinaPage } from '../Disciplina';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';

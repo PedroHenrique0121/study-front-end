@@ -12,15 +12,20 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { AssuntoCadastrosComponent } from './assunto-cadastros/assunto-cadastros.component';
-
+import { CardTitleComponent } from '../componentes/card-title/card-title.component';
+import { ComponentesModule } from '../componentes/componentes.module';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
-    AssuntoCadastrosComponent
+    AssuntoCadastrosComponent,
+   
+   
   ],
   imports: [
     CommonModule,
     AssuntosRoutingModule,
+   
     FormsModule,
     ReactiveFormsModule,
     MatCardModule,
@@ -30,10 +35,15 @@ import { AssuntoCadastrosComponent } from './assunto-cadastros/assunto-cadastros
     MatMenuModule,
     MatFormFieldModule,
     MatPaginatorModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    ComponentesModule,
+    MatSelectModule
+
   ],
   exports: [
-    AssuntoCadastrosComponent
+    AssuntoCadastrosComponent,
+   
+   
   ]
 })
 export class AssuntosModule { }
