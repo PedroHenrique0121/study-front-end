@@ -40,6 +40,7 @@ import { ComponentesModule } from '../componentes/componentes.module';
     MatPaginatorModule,
     MatProgressBarModule,
     ComponentesModule,
+    ComponentesModule
     
   ],
   exports:[
