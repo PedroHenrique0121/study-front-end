@@ -6,9 +6,10 @@
             <img alt="Brastra.gif (4376 bytes)" [ngStyle]="{marginTop:'10px'}" height="82"
                 src="https://www.planalto.gov.br/ccivil_03/decreto/Brastra.gif" width="74">
         </div>
-        <div>
+        <div class="centralizar">
             <app-card-title title="Disciplinas"></app-card-title>
-            <mat-progress-bar  *ngIf="!disciplinaPage" mode="indeterminate"></mat-progress-bar>
+            
+            <mat-progress-spinner *ngIf="!disciplinaPage" diameter="40" mode="indeterminate"value=75></mat-progress-spinner>
         </div>
 
         <div class="disciplinas" *ngFor="let disciplina of disciplinas">

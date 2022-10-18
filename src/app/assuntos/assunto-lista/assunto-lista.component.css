@@ -1,0 +1,33 @@
+.layoute{
+   
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+   
+    height: calc(100vh - 64px);
+    width: 100vw;
+    overflow-y: auto;
+}
+.centralizar{
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.assuntos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    font-family: Arial;
+}
+
+h1{
+    word-break: break-all;
+    word-wrap: break-word;
+    margin: 0  10px;
+}
+

@@ -16,9 +16,12 @@ import { CardTitleComponent } from '../componentes/card-title/card-title.compone
 import { ComponentesModule } from '../componentes/componentes.module';
 import {MatSelectModule} from '@angular/material/select';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { AssuntoListaComponent } from './assunto-lista/assunto-lista.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [
     AssuntoCadastrosComponent,
+    AssuntoListaComponent,
    
    
   ],
@@ -38,6 +41,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatProgressBarModule,
     ComponentesModule,
     MatSelectModule,
+    MatProgressSpinnerModule,
    
     
 

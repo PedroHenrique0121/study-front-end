@@ -17,6 +17,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { DisciplinaService } from '../services/disciplina.service';
 import { CardTitleComponent } from '../componentes/card-title/card-title.component';
 import { ComponentesModule } from '../componentes/componentes.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [DisciplinaCadastroComponent,
@@ -40,7 +41,8 @@ import { ComponentesModule } from '../componentes/componentes.module';
     MatPaginatorModule,
     MatProgressBarModule,
     ComponentesModule,
-    ComponentesModule
+    ComponentesModule,
+    MatProgressSpinnerModule,
     
   ],
   exports:[

@@ -1,0 +1,44 @@
+<div class="layoute">
+
+    <div class="layoute">
+        <div class="icon">
+
+            <img alt="Brastra.gif (4376 bytes)" [ngStyle]="{marginTop:'10px'}" height="82"
+                src="https://www.planalto.gov.br/ccivil_03/decreto/Brastra.gif" width="74">
+        </div>
+        <div class="centralizar">
+            <app-card-title title="Assuntos"></app-card-title>
+            <mat-progress-spinner *ngIf="!assuntoPage" diameter="40" mode="indeterminate"value=75></mat-progress-spinner>
+        </div>
+
+        <div class="assuntos" *ngFor="let assunto of assuntos">
+
+            <h1>
+                <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
+                    <mat-icon>pending</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button at-icon-button mat-menu-item (click)="editar(assunto)">
+                        <mat-icon>edit</mat-icon> Editar
+                    </button>
+                    <button at-icon-button mat-menu-item (click)="excluir(assunto)">
+                        <mat-icon>delete</mat-icon> Excluir
+                    </button>
+                </mat-menu>
+                {{assunto.descricao}}
+
+            </h1>
+
+        </div>
+    </div>
+
+
+
+    <mat-paginator [length]="assuntoPage?assuntoPage.totalElements: 7" [disabled]=""
+        [pageSizeOptions]="[7, 10, (assuntoPage?assuntoPage.totalElements: 30 /2)]"
+        (page)="pegaMudancaPaginacao($event)" aria-label="Select page">
+    </mat-paginator>
+
+</div>
+
+<!-- pending -->

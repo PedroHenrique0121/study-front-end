@@ -16,14 +16,9 @@ import { DialogComponent } from 'src/app/componentes/dialog/dialog.component';
 })
 export class DisciplinaListaComponent implements OnInit {
 
-  @ViewChild('menuTrigger') menuTrigger!: MatMenuTrigger;
-
   disciplinas!: Disciplina[];
   disciplinaPage!: DisciplinaPage;
   matFormField!: MatFormField;
-
-
-
 
   constructor(private disciplinaService: DisciplinaService,
     private matDialog: MatDialog,
