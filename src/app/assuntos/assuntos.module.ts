@@ -15,7 +15,7 @@ import { AssuntoCadastrosComponent } from './assunto-cadastros/assunto-cadastros
 import { CardTitleComponent } from '../componentes/card-title/card-title.component';
 import { ComponentesModule } from '../componentes/componentes.module';
 import {MatSelectModule} from '@angular/material/select';
-
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 @NgModule({
   declarations: [
     AssuntoCadastrosComponent,
@@ -25,7 +25,7 @@ import {MatSelectModule} from '@angular/material/select';
   imports: [
     CommonModule,
     AssuntosRoutingModule,
-   
+    MatAutocompleteModule,
     FormsModule,
     ReactiveFormsModule,
     MatCardModule,
@@ -37,7 +37,9 @@ import {MatSelectModule} from '@angular/material/select';
     MatPaginatorModule,
     MatProgressBarModule,
     ComponentesModule,
-    MatSelectModule
+    MatSelectModule,
+   
+    
 
   ],
   exports: [

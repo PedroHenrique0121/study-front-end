@@ -23,7 +23,7 @@ export class DisciplinaService {
   }
 
   retornarPorDescricao(descricao: string):Observable<DisciplinaPage>{
-    return this.httpcliente.get<DisciplinaPage>(environment.apiURL+ `disciplinas//search/${descricao}`);
+    return this.httpcliente.get<DisciplinaPage>(environment.apiURL+ `/disciplinas/search/${descricao}`);
 
   }
   retornarTodas(page: number, size:number): Observable<DisciplinaPage> {
