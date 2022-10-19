@@ -15,12 +15,12 @@ export class AssuntoService {
     return this.httpcliente.post<Assunto>(environment.apiURL + "/assuntos/cadastrar", assunto);
   }
 
-  editar(id: number,assunto: Assunto): Observable<Assunto>{
-    return this.httpcliente.put<Assunto>(environment.apiURL + `/assuntos/editar/${id}`,assunto);
+  editar(assunto: Assunto): Observable<Assunto>{
+    return this.httpcliente.put<Assunto>(environment.apiURL + `/assuntos/editar/${assunto.id}`,assunto);
   }
 
   retornarPorDescricao(descricao: string):Observable<AssuntoPage>{
-    return this.httpcliente.get<AssuntoPage>(environment.apiURL+ `assuntos/search/${descricao}`);
+    return this.httpcliente.get<AssuntoPage>(environment.apiURL+ `/assuntos/search/${descricao}`);
 
   }
   retornarTodas(page: number, size:number): Observable<AssuntoPage> {

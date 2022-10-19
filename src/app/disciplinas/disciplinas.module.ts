@@ -32,6 +32,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     DisciplinasRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    ComponentesModule,
     MatCardModule,
     MatInputModule,
     MatButtonModule,
@@ -40,8 +41,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatFormFieldModule,
     MatPaginatorModule,
     MatProgressBarModule,
-    ComponentesModule,
-    ComponentesModule,
+    
+    
     MatProgressSpinnerModule,
     
   ],

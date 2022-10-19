@@ -241,9 +241,11 @@
 
 }
 
+.mat-expansion-panel-body {
+ padding: 0px 0px 0px 0px;
+}
 .mat-expansion-panel-header {
     height: 48px;
-  
     border-bottom: 10px;
 }
 

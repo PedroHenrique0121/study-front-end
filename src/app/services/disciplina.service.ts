@@ -18,8 +18,13 @@ export class DisciplinaService {
     return this.httpcliente.post<Disciplina>(environment.apiURL + "/disciplinas/cadastrar", disciplina);
   }
 
-  editar(id: number,disciplina: Disciplina): Observable<Disciplina>{
-    return this.httpcliente.put<Disciplina>(environment.apiURL + `/disciplinas/editar/${id}`,disciplina);
+  editar(disciplina: Disciplina): Observable<Disciplina>{
+    return this.httpcliente.put<Disciplina>(environment.apiURL + `/disciplinas/editar/${disciplina.id}`,disciplina);
+  }
+
+  retornarPorId(id: number):Observable<Disciplina>{
+    return this.httpcliente.get<Disciplina>(environment.apiURL+ `/disciplinas/${id}`);
+
   }
 
   retornarPorDescricao(descricao: string):Observable<DisciplinaPage>{
@@ -30,7 +35,7 @@ export class DisciplinaService {
     return this.httpcliente.get<DisciplinaPage>(environment.apiURL + `/disciplinas?size=${size? size: 10}&page=${page? page: 0}`);
   }
 
-  retornarTodaSemPaginacao(): Observable<DisciplinaPage> {
+  retornarTodasSemPaginacao(): Observable<DisciplinaPage> {
     return this.httpcliente.get<DisciplinaPage>(environment.apiURL + `/disciplinas`);
   }
 

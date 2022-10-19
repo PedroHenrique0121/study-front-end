@@ -117,7 +117,7 @@ export class AssuntoCadastrosComponent implements OnInit {
   }
 
   buscarPorTodasDisciplinas() {
-    this.disciplinaService.retornarTodaSemPaginacao()
+    this.disciplinaService.retornarTodasSemPaginacao()
       .subscribe(response => {
         this.disciplinaPage = response
         this.disciplinas = this.disciplinaPage.content

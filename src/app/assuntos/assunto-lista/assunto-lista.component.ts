@@ -15,7 +15,9 @@ import { Assunto, AssuntoPage } from '../Assunto';
 export class AssuntoListaComponent implements OnInit {
   assuntos!: Assunto[];
   assuntoPage!: AssuntoPage;
-  // matFormField!: MatFormField;
+  descricaoAssuntoPesquisa!: string;
+
+  
 
   constructor(private assuntoService: AssuntoService,
     private matDialog: MatDialog,
@@ -54,7 +56,7 @@ export class AssuntoListaComponent implements OnInit {
 
   editar(assunto: Assunto) {
 
-    this.router.navigate(["/disciplinas/editar"], { state: { assunto: assunto } })
+    this.router.navigate(["/assuntos/editar"], { state: { assunto: assunto } })
 
   }
 
@@ -89,5 +91,17 @@ export class AssuntoListaComponent implements OnInit {
         })
       })
   }
+  buscarPorDescricao() {
+    
+    this.assuntoService.retornarPorDescricao(this.descricaoAssuntoPesquisa)
+      .subscribe(response => {
+        this.assuntoPage = response
+        this.assuntos = this.assuntoPage.content
+        console.log(this.assuntos)
+      }, errorResponse => {
+        this.assuntos=[]
+      })
+  }
+  
 
 }

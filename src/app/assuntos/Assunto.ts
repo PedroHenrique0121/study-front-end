@@ -1,8 +1,11 @@
+import { Disciplina } from "../disciplinas/Disciplina";
+
 export class Assunto{
 
     id!: number;
     descricao!: string;
     disciplinaId!:number;
+    disciplina!: Disciplina;
 
 }
 

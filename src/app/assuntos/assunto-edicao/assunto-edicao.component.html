@@ -1,0 +1,50 @@
+
+<app-card-title  title="Edição de Assuntos"></app-card-title>
+<mat-card>
+<div class="container">
+
+    <form [formGroup]="formulario" #formDir="ngForm"  (submit)="onSubmit()" class="example-form" >
+
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Codigo do Assunto</mat-label>
+            <input matInput  formControlName="id"  [(ngModel)]="assunto.id">
+
+            <!-- <mat-error *ngIf="descricao?.hasError('minlength') ">
+                Disciplina is <strong>minLength 3 caracteres</strong>
+            </mat-error> -->
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Descrição da disciplina Vinculada</mat-label>
+            <input matInput formControlName="descricaoDisciplina"   [(ngModel)]="assunto.disciplina.descricao">
+
+            <!-- <mat-error *ngIf="descricao?.hasError('minlength') ">
+                Disciplina is <strong>minLength 3 caracteres</strong>
+            </mat-error> -->
+        </mat-form-field>
+
+        <mat-form-field   class="example-full-width" appearance="outline">
+            <mat-label>Disciplina</mat-label>
+            <input matInput formControlName="descricao" [(ngModel)]="assunto.descricao"
+                placeholder="Informe a descrição da disciplina" dis>
+
+            <mat-error *ngIf="descricao?.hasError('required') ">
+                Assunto is <strong>required</strong>
+            </mat-error>
+            <!-- <mat-error *ngIf="descricao?.hasError('minlength') ">
+                Disciplina is <strong>minLength 3 caracteres</strong>
+            </mat-error> -->
+        </mat-form-field>
+        <button mat-raised-button [ngStyle]="{marginRight:'10px', marginBottom:'4px'}"
+            color="primary">Enviar</button>
+        <button mat-button type="button" color="primary" (click)="cancelar()">Cancelar</button>
+
+
+        <!-- <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Leave a comment</mat-label>
+            <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+        </mat-form-field> -->
+
+    </form>
+</div>
+</mat-card>

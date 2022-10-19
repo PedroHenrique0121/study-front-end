@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardTitleComponent } from './card-title/card-title.component';
 import { MatCardModule } from '@angular/material/card';
+import { TitleListComponent } from './title-list/title-list.component';
 
 
 
 @NgModule({
   declarations: [
-    CardTitleComponent
+    CardTitleComponent,
+    TitleListComponent
   ],
   imports: [
     CommonModule,
@@ -15,7 +17,8 @@ import { MatCardModule } from '@angular/material/card';
   ]
   ,
   exports:[
-    CardTitleComponent
+    CardTitleComponent,
+    TitleListComponent
   ]
 })
 export class ComponentesModule { }

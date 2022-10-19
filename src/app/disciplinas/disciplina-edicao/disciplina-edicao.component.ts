@@ -37,17 +37,7 @@ export class DisciplinaEdicaoComponent implements OnInit {
     private location: Location
 
   ) {
-
-    this.disciplina = new Disciplina();
-    const state = this.location.getState() as D;
-    if (state.disciplina != undefined) {
-      this.disciplina = state.disciplina;
-    } else {
-      this.router.navigate(["/disciplinas/lista"])
-
-    }
-
-
+    this.verificaEdicao()
   }
 
   ngOnInit(): void {
@@ -67,6 +57,17 @@ export class DisciplinaEdicaoComponent implements OnInit {
     return this.formulario.get("descricao");
   }
 
+  verificaEdicao() {
+    this.disciplina = new Disciplina();
+    const state = this.location.getState() as D;
+    if (state.disciplina != undefined) {
+      this.disciplina = state.disciplina;
+    } else {
+      this.router.navigate(["/disciplinas/lista"])
+
+    }
+  }
+
   onSubmit() {
 
     if (this.formulario.invalid) {
@@ -74,9 +75,9 @@ export class DisciplinaEdicaoComponent implements OnInit {
     }
 
     console.log(this.disciplina)
-    this.disciplinaService.editar(this.disciplina.id,this.disciplina).
-      subscribe(response => {
-        
+    this.disciplinaService.editar(this.disciplina)
+      .subscribe(response => {
+
         this.dialog.open(DialogComponent, {
           disableClose: true,
           height: "200px",
@@ -85,13 +86,13 @@ export class DisciplinaEdicaoComponent implements OnInit {
             msg: "Disciplina  editada com sucesso!",
             icon: "check_circle"
           }
-        
+
         })
 
         this.formulario.reset()
         this.router.navigate(["/disciplinas/lista"])
       }, errorResponse => {
-       
+
         this.dialog.open(DialogComponent, {
           disableClose: true,
           height: "300px",
@@ -108,7 +109,5 @@ export class DisciplinaEdicaoComponent implements OnInit {
   fechar() {
     this.router.navigate(["/disciplinas/lista"])
   }
-
-
 
 }

@@ -19,7 +19,8 @@ export class DisciplinaListaComponent implements OnInit {
   disciplinas!: Disciplina[];
   disciplinaPage!: DisciplinaPage;
   matFormField!: MatFormField;
-
+ 
+  descricaoDisciplinaPesquisa!: string
   constructor(private disciplinaService: DisciplinaService,
     private matDialog: MatDialog,
     private router: Router) {
@@ -90,6 +91,18 @@ export class DisciplinaListaComponent implements OnInit {
           }
 
         })
+      })
+  }
+
+  buscarPorDescricao() {
+    console.log(this.disciplinas)
+    this.disciplinaService.retornarPorDescricao(this.descricaoDisciplinaPesquisa)
+      .subscribe(response => {
+        this.disciplinaPage = response
+        this.disciplinas = this.disciplinaPage.content
+
+      }, errorResponse => {
+        this.disciplinas=[]
       })
   }
 }

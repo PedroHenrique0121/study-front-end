@@ -1,14 +1,18 @@
 <div class="layoute">
 
     <div class="layoute">
-        <div class="icon">
-
-            <img alt="Brastra.gif (4376 bytes)" [ngStyle]="{marginTop:'10px'}" height="82"
-                src="https://www.planalto.gov.br/ccivil_03/decreto/Brastra.gif" width="74">
-        </div>
+        <app-title-list title="Assuntos" ></app-title-list>
         <div class="centralizar">
-            <app-card-title title="Assuntos"></app-card-title>
-            <mat-progress-spinner *ngIf="!assuntoPage" diameter="40" mode="indeterminate"value=75></mat-progress-spinner>
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Pesquise por um assunto...</mat-label>
+                <input type="text" matInput 
+                    (ngModelChange)="buscarPorDescricao()" [(ngModel)]="descricaoAssuntoPesquisa">
+                <mat-icon matSuffix>search</mat-icon>
+                <!-- <mat-error *ngIf="descricaoD?.hasError('required')">È necessario escolher uma disciplina</mat-error> -->
+              
+
+            </mat-form-field>
+            <mat-progress-spinner *ngIf="!assuntoPage || assuntos.length==0" diameter="40" mode="indeterminate"value=75></mat-progress-spinner>
         </div>
 
         <div class="assuntos" *ngFor="let assunto of assuntos">
