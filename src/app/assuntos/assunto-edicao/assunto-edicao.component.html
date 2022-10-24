@@ -14,19 +14,36 @@
             </mat-error> -->
         </mat-form-field>
 
-        <mat-form-field class="example-full-width" appearance="outline">
+        <!-- <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Descrição da disciplina Vinculada</mat-label>
             <input matInput formControlName="descricaoDisciplina"   [(ngModel)]="assunto.disciplina.descricao">
 
-            <!-- <mat-error *ngIf="descricao?.hasError('minlength') ">
+            <mat-error *ngIf="descricao?.hasError('minlength') ">
                 Disciplina is <strong>minLength 3 caracteres</strong>
-            </mat-error> -->
+            </mat-error>
+        </mat-form-field> -->
+
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Seleção da Disciplina</mat-label>
+            <input type="text" matInput formControlName="descricaoDisciplina" [matAutocomplete]="auto"
+                (ngModelChange)="buscarPorDescricao()" [(ngModel)]="descricaoDisciplinaPesquisa">
+            <mat-icon matSuffix>search</mat-icon>
+            <!-- <mat-error *ngIf="descricaoD?.hasError('required')">È necessario escolher uma disciplina</mat-error> -->
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option>--</mat-option>
+                <mat-option (onSelectionChange)="setarIdDisciplinaEscolhida(disciplina.id,disciplina.descricao)"
+                    *ngFor="let disciplina of disciplinas " [value]="disciplina.descricao">
+                    {{disciplina.descricao}}
+                </mat-option>
+            </mat-autocomplete>
+
         </mat-form-field>
+        <p>Disciplina escolhida : <strong>{{descricaoDisciplinaEscolhida}}</strong></p>
 
         <mat-form-field   class="example-full-width" appearance="outline">
-            <mat-label>Disciplina</mat-label>
+            <mat-label>Assunto</mat-label>
             <input matInput formControlName="descricao" [(ngModel)]="assunto.descricao"
-                placeholder="Informe a descrição da disciplina" dis>
+                placeholder="Informe a descrição do assunto" dis>
 
             <mat-error *ngIf="descricao?.hasError('required') ">
                 Assunto is <strong>required</strong>
@@ -35,6 +52,8 @@
                 Disciplina is <strong>minLength 3 caracteres</strong>
             </mat-error> -->
         </mat-form-field>
+
+        
         <button mat-raised-button [ngStyle]="{marginRight:'10px', marginBottom:'4px'}"
             color="primary">Enviar</button>
         <button mat-button type="button" color="primary" (click)="cancelar()">Cancelar</button>

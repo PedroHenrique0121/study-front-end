@@ -33,10 +33,11 @@ export class AssuntoListaComponent implements OnInit {
 
   buscarPorTodosAssuntos(page: number, size: number) {
 
-    this.assuntoService.retornarTodas(page, size)
+    this.assuntoService.retornarTodos(page, size)
       .subscribe(response => {
         this.assuntoPage = response
-        this.assuntos = this.assuntoPage.content
+        this.assuntos = response.content
+      
       },errorResponse=>{
        
        
@@ -46,7 +47,7 @@ export class AssuntoListaComponent implements OnInit {
 
   pegaMudancaPaginacao(pagina: PageEvent) {
 
-    this.assuntoService.retornarTodas(pagina.pageIndex, pagina.pageSize).
+    this.assuntoService.retornarTodos(pagina.pageIndex, pagina.pageSize).
       subscribe(response => {
  
         this.assuntoPage = response

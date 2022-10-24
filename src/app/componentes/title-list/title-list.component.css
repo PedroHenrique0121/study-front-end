@@ -1,8 +1,16 @@
-.title{
-    margin-top: 25px;
+.title {
+    margin-top: 30px;
     margin-bottom: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
+    padding: 20px 30px;
+}
+
+@media (max-width: 585px) {
+    .title {
+        
+        flex-direction: column;
+    }
 }

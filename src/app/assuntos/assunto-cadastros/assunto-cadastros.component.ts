@@ -60,8 +60,6 @@ export class AssuntoCadastrosComponent implements OnInit {
 
   onSubmit() {
 
-
-
     if (this.disciplinaId?.hasError('required')) {
       this.dialog.open(DialogComponent, {
         disableClose: true,
@@ -78,37 +76,37 @@ export class AssuntoCadastrosComponent implements OnInit {
       return;
     } else {
       this.assuntoService.salvar(this.assunto).
-      subscribe(response=>{
-        this.dialog.open(DialogComponent,{
-          disableClose:true,
-          height:"200px",
-          width:"400px",
-          data:{
-            msg:"Assunto cadastrado com sucesso!",
-            icon:"check_circle"
-          }
-        } )
-  
-       this.formulario.reset()
-      this.descricaoDisciplina = ""
-      }, errorResponse=>{
-        console.log(errorResponse)
-        this.dialog.open(DialogComponent,{
-          disableClose:true,
-          height:"200px",
-          width:"400px",
-          data:{
-            msg: errorResponse.error.titulo? errorResponse.error.titulo: "Não foi possivel realizar o cadastro",
-            icon:"gpp_bad"
-          }
-  
-        } )
-      })
-     
+        subscribe(response => {
+          this.dialog.open(DialogComponent, {
+            disableClose: true,
+            height: "200px",
+            width: "400px",
+            data: {
+              msg: "Assunto cadastrado com sucesso!",
+              icon: "check_circle"
+            }
+          })
+
+          this.formulario.reset()
+          this.descricaoDisciplina = ""
+        }, errorResponse => {
+          console.log(errorResponse)
+          this.dialog.open(DialogComponent, {
+            disableClose: true,
+            height: "200px",
+            width: "400px",
+            data: {
+              msg: errorResponse.error.titulo ? errorResponse.error.titulo : "Não foi possivel realizar o cadastro",
+              icon: "gpp_bad"
+            }
+
+          })
+        })
+
     }
 
 
-    
+
   }
 
   listar() {
@@ -119,8 +117,8 @@ export class AssuntoCadastrosComponent implements OnInit {
   buscarPorTodasDisciplinas() {
     this.disciplinaService.retornarTodasSemPaginacao()
       .subscribe(response => {
-        this.disciplinaPage = response
-        this.disciplinas = this.disciplinaPage.content
+
+        this.disciplinas = response
 
       }, errorResponse => {
 
@@ -130,22 +128,21 @@ export class AssuntoCadastrosComponent implements OnInit {
 
   setarIdDisciplinaEscolhida(id: number, descricao: string) {
     this.assunto.disciplinaId = id
-  
+
     if (descricao.length > 40) {
       this.descricaoDisciplina = descricao
-      this.descricaoDisciplina=this.descricaoDisciplina.substring(0, 40)
-      this.descricaoDisciplina =this.descricaoDisciplina.concat( "...")
-    }else{
+      this.descricaoDisciplina = this.descricaoDisciplina.substring(0, 40)
+      this.descricaoDisciplina = this.descricaoDisciplina.concat("...")
+    } else {
       this.descricaoDisciplina = descricao
     }
     this.disciplinaId?.setValue(id)
   }
   buscarPorDescricao() {
 
-    this.disciplinaService.retornarPorDescricao(this.descricaoDisciplinaPesquisa)
+    this.disciplinaService.retornarPorDescricaoSemPaginacao(this.descricaoDisciplinaPesquisa)
       .subscribe(response => {
-        this.disciplinaPage = response
-        this.disciplinas = this.disciplinaPage.content
+        this.disciplinas = response;
 
       }, errorResponse => {
 

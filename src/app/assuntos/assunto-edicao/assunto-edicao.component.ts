@@ -25,9 +25,12 @@ export class AssuntoEdicaoComponent implements OnInit {
   assunto!: Assunto;
   dialogConfig!: MatDialogConfig;
   disciplina!: Disciplina;
-
+  disciplinas!: Disciplina[]
+  descricaoDisciplinaPesquisa!: string;
+  descricaoDisciplinaEscolhida!: string;
   constructor(
     private assuntoService: AssuntoService,
+    private disciplinaService: DisciplinaService,
     private dialog: MatDialog,
     private router: Router,
     private location: Location
@@ -42,10 +45,12 @@ export class AssuntoEdicaoComponent implements OnInit {
       id: new FormControl('',),
       descricao: new FormControl('', [Validators.required,]),
       descricaoDisciplina: new FormControl('',),
+      disciplinaId: new FormControl('',)
     });
 
     this.id?.disable();
-    this.descricaoDisciplina?.disable()
+    // this.getDescricaoDisciplina?.disable()
+    this.descricaoDisciplinaEscolhida = this.assunto.disciplina.descricao
   }
 
   get id() {
@@ -55,8 +60,12 @@ export class AssuntoEdicaoComponent implements OnInit {
     return this.formulario.get("descricao");
   }
 
-  get descricaoDisciplina() {
+  get getDescricaoDisciplina() {
     return this.formulario.get("descricaoDisciplina");
+  }
+
+  get disciplinaId() {
+    return this.formulario.get("disciplinaId");
   }
 
   verificaEdicao() {
@@ -76,6 +85,7 @@ export class AssuntoEdicaoComponent implements OnInit {
       return;
     }
 
+    console.log(this.assunto)
     this.assuntoService.editar(this.assunto)
       .subscribe(response => {
 
@@ -104,6 +114,33 @@ export class AssuntoEdicaoComponent implements OnInit {
 
         })
       })
+  }
+
+  buscarPorDescricao() {
+
+    this.disciplinaService.retornarPorDescricaoSemPaginacao(this.descricaoDisciplinaPesquisa)
+      .subscribe(response => {
+        this.disciplinas = response;
+
+      }, errorResponse => {
+
+      })
+  }
+
+  setarIdDisciplinaEscolhida(id: number, descricao: string) {
+    this.assunto.disciplinaId = id
+
+    if (descricao.length > 40) {
+      this.descricaoDisciplinaEscolhida = descricao
+      this.descricaoDisciplinaEscolhida = this.descricaoDisciplinaEscolhida.substring(0, 40)
+      this.descricaoDisciplinaEscolhida = this.descricaoDisciplinaEscolhida.concat("...")
+    } else {
+      this.descricaoDisciplinaEscolhida = descricao
+    }
+    this.disciplinaId?.setValue(id);
+    this.assunto.disciplinaId = id;
+    this.assunto.disciplina.descricao = descricao;
+    this.assunto.disciplina.id = id;
   }
 
   cancelar() {

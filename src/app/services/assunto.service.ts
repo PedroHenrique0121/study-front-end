@@ -20,11 +20,21 @@ export class AssuntoService {
   }
 
   retornarPorDescricao(descricao: string):Observable<AssuntoPage>{
-    return this.httpcliente.get<AssuntoPage>(environment.apiURL+ `/assuntos/search/${descricao}`);
+    return this.httpcliente.get<AssuntoPage>(environment.apiURL+ `/assuntos/search/pagination/${descricao}`);
 
   }
-  retornarTodas(page: number, size:number): Observable<AssuntoPage> {
-    return this.httpcliente.get<AssuntoPage>(environment.apiURL + `/assuntos?size=${size? size: 10}&page=${page? page: 0}`);
+
+  retornarPorDescricaoSemPaginacao(descricao: string):Observable<Assunto[]>{
+    return this.httpcliente.get<Assunto[]>(environment.apiURL+ `/assuntos/search/pagination/${descricao}`);
+
+  }
+
+  retornarTodosSempaginacao(page: number, size:number): Observable<Assunto[]> {
+    return this.httpcliente.get<Assunto[]>(environment.apiURL + `/assuntos`);
+  }
+
+  retornarTodos(page: number, size:number): Observable<AssuntoPage> {
+    return this.httpcliente.get<AssuntoPage>(environment.apiURL + `/assuntos/pagination?size=${size}&page=${page}`);
   }
 
   deletar(assunto: Assunto){

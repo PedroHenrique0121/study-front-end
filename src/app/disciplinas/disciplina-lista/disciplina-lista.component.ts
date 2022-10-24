@@ -19,12 +19,16 @@ export class DisciplinaListaComponent implements OnInit {
   disciplinas!: Disciplina[];
   disciplinaPage!: DisciplinaPage;
   matFormField!: MatFormField;
- 
+
+  statusPesquisaPorDescricao!: boolean;
+
   descricaoDisciplinaPesquisa!: string
+
   constructor(private disciplinaService: DisciplinaService,
     private matDialog: MatDialog,
     private router: Router) {
 
+    this.statusPesquisaPorDescricao = false
   }
 
   ngOnInit(): void {
@@ -39,21 +43,23 @@ export class DisciplinaListaComponent implements OnInit {
       .subscribe(response => {
         this.disciplinaPage = response
         this.disciplinas = this.disciplinaPage.content
-      },errorResponse=>{
-       
-       
+      }, errorResponse => {
+
+
       })
 
   }
 
   pegaMudancaPaginacao(pagina: PageEvent) {
+    if (this.descricaoDisciplinaPesquisa === "") {
+      this.statusPesquisaPorDescricao = false
+    }
+    if (this.statusPesquisaPorDescricao == false) {
+      this.buscarPorTodasDisciplinas(pagina?pagina.pageIndex: 0,pagina? pagina.pageSize: 7);
+    } else {
+      this.buscarPorDescricao(pagina.pageSize, pagina.pageIndex)
+    }
 
-    this.disciplinaService.retornarTodas(pagina.pageIndex, pagina.pageSize).
-      subscribe(response => {
- 
-        this.disciplinaPage = response
-        this.disciplinas = this.disciplinaPage.content
-      })
   }
 
   editar(disciplina: Disciplina) {
@@ -94,15 +100,18 @@ export class DisciplinaListaComponent implements OnInit {
       })
   }
 
-  buscarPorDescricao() {
-    console.log(this.disciplinas)
-    this.disciplinaService.retornarPorDescricao(this.descricaoDisciplinaPesquisa)
+  buscarPorDescricao(size?: number, page?: number) {
+
+    this.disciplinaService.retornarPorDescricao(this.descricaoDisciplinaPesquisa, size ? size : 7, page ? page : 0)
       .subscribe(response => {
         this.disciplinaPage = response
         this.disciplinas = this.disciplinaPage.content
 
       }, errorResponse => {
-        this.disciplinas=[]
+        this.disciplinas = []
       })
+    this.statusPesquisaPorDescricao = true
   }
+
+
 }

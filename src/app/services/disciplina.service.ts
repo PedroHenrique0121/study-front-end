@@ -18,29 +18,33 @@ export class DisciplinaService {
     return this.httpcliente.post<Disciplina>(environment.apiURL + "/disciplinas/cadastrar", disciplina);
   }
 
-  editar(disciplina: Disciplina): Observable<Disciplina>{
-    return this.httpcliente.put<Disciplina>(environment.apiURL + `/disciplinas/editar/${disciplina.id}`,disciplina);
+  editar(disciplina: Disciplina): Observable<Disciplina> {
+    return this.httpcliente.put<Disciplina>(environment.apiURL + `/disciplinas/editar/${disciplina.id}`, disciplina);
   }
 
-  retornarPorId(id: number):Observable<Disciplina>{
-    return this.httpcliente.get<Disciplina>(environment.apiURL+ `/disciplinas/${id}`);
+  retornarPorId(id: number): Observable<Disciplina> {
+    return this.httpcliente.get<Disciplina>(environment.apiURL + `/disciplinas/${id}`);
 
   }
 
-  retornarPorDescricao(descricao: string):Observable<DisciplinaPage>{
-    return this.httpcliente.get<DisciplinaPage>(environment.apiURL+ `/disciplinas/search/${descricao}`);
+  retornarPorDescricao(descricao: string, size: number, page: number): Observable<DisciplinaPage> {
+    return this.httpcliente.get<DisciplinaPage>(environment.apiURL + `/disciplinas/search/pagination/${descricao}?size=${size ? size : 10}&page=${page ? page : 0}`);
 
   }
-  retornarTodas(page: number, size:number): Observable<DisciplinaPage> {
-    return this.httpcliente.get<DisciplinaPage>(environment.apiURL + `/disciplinas?size=${size? size: 10}&page=${page? page: 0}`);
+  retornarPorDescricaoSemPaginacao(descricao: string): Observable<Disciplina[]> {
+    return this.httpcliente.get<Disciplina[]>(environment.apiURL + `/disciplinas/search/${descricao}`);
+
+  }
+  retornarTodas(page: number, size: number): Observable<DisciplinaPage> {
+    return this.httpcliente.get<DisciplinaPage>(environment.apiURL + `/disciplinas/pagination?size=${size ? size : 7}&page=${page ? page : 0}`);
   }
 
-  retornarTodasSemPaginacao(): Observable<DisciplinaPage> {
-    return this.httpcliente.get<DisciplinaPage>(environment.apiURL + `/disciplinas`);
+  retornarTodasSemPaginacao(): Observable<Disciplina[]> {
+    return this.httpcliente.get<Disciplina[]>(environment.apiURL + `/disciplinas`);
   }
 
-  deletar(disciplina: Disciplina){
-    return this.httpcliente.delete(environment.apiURL+`/disciplinas/${disciplina.id}`);
+  deletar(disciplina: Disciplina) {
+    return this.httpcliente.delete(environment.apiURL + `/disciplinas/${disciplina.id}`);
   }
 
 }
