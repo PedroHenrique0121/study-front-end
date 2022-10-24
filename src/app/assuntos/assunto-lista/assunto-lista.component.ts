@@ -17,7 +17,7 @@ export class AssuntoListaComponent implements OnInit {
   assuntoPage!: AssuntoPage;
   descricaoAssuntoPesquisa!: string;
 
-  
+  statusPesquisaPorDescricao!: boolean;
 
   constructor(private assuntoService: AssuntoService,
     private matDialog: MatDialog,
@@ -46,6 +46,14 @@ export class AssuntoListaComponent implements OnInit {
   }
 
   pegaMudancaPaginacao(pagina: PageEvent) {
+    if (this.descricaoAssuntoPesquisa === "") {
+      this.statusPesquisaPorDescricao = false
+    }
+    if (this.statusPesquisaPorDescricao == false) {
+      this.buscarPorTodosAssuntos(pagina?pagina.pageIndex: 0,pagina? pagina.pageSize: 7);
+    } else {
+      this.buscarPorDescricao(pagina.pageSize, pagina.pageIndex)
+    }
 
     this.assuntoService.retornarTodos(pagina.pageIndex, pagina.pageSize).
       subscribe(response => {
@@ -53,6 +61,8 @@ export class AssuntoListaComponent implements OnInit {
         this.assuntoPage = response
         this.assuntos = this.assuntoPage.content
       })
+
+
   }
 
   editar(assunto: Assunto) {
@@ -92,13 +102,13 @@ export class AssuntoListaComponent implements OnInit {
         })
       })
   }
-  buscarPorDescricao() {
+  buscarPorDescricao(page?:number,size?:number) {
     
-    this.assuntoService.retornarPorDescricao(this.descricaoAssuntoPesquisa)
+    this.assuntoService.retornarPorDescricao(this.descricaoAssuntoPesquisa,page?page: 0, size?size:7)
       .subscribe(response => {
         this.assuntoPage = response
         this.assuntos = this.assuntoPage.content
-        console.log(this.assuntos)
+        
       }, errorResponse => {
         this.assuntos=[]
       })

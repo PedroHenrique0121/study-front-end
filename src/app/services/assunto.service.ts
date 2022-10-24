@@ -19,8 +19,8 @@ export class AssuntoService {
     return this.httpcliente.put<Assunto>(environment.apiURL + `/assuntos/editar/${assunto.id}`,assunto);
   }
 
-  retornarPorDescricao(descricao: string):Observable<AssuntoPage>{
-    return this.httpcliente.get<AssuntoPage>(environment.apiURL+ `/assuntos/search/pagination/${descricao}`);
+  retornarPorDescricao(descricao: string, page:number, size:number):Observable<AssuntoPage>{
+    return this.httpcliente.get<AssuntoPage>(environment.apiURL+ `/assuntos/search/pagination/${descricao}?size=${size}&page=${page}`);
 
   }
 

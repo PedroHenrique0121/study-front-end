@@ -1,4 +1,4 @@
-.title {
+.titleGroup {
     margin-top: 30px;
     margin-bottom: 25px;
     display: flex;
@@ -8,9 +8,17 @@
     padding: 20px 30px;
 }
 
+.title{
+    margin-left: 10px;
+}
+
 @media (max-width: 585px) {
-    .title {
+    .titleGroup {
         
         flex-direction: column;
+    }
+    .title{
+        margin-top: 10px;
+        margin-left: 0px;
     }
 }
