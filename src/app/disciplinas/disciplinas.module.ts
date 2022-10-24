@@ -12,8 +12,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { DisciplinaEdicaoComponent } from './disciplina-edicao/disciplina-edicao.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { DisciplinaService } from '../services/disciplina.service';
 import { CardTitleComponent } from '../componentes/card-title/card-title.component';
 import { ComponentesModule } from '../componentes/componentes.module';
@@ -23,9 +23,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   declarations: [DisciplinaCadastroComponent,
     DisciplinaListaComponent,
     DisciplinaEdicaoComponent,
-   
-    
-    
   ],
   imports: [
     CommonModule,
@@ -41,19 +38,14 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatFormFieldModule,
     MatPaginatorModule,
     MatProgressBarModule,
-    
-    
     MatProgressSpinnerModule,
-    
+
   ],
-  exports:[
+  exports: [
     DisciplinaCadastroComponent,
     DisciplinaListaComponent,
-   
-    
-  
   ],
-  providers:[
+  providers: [
     DisciplinaService
   ]
 })

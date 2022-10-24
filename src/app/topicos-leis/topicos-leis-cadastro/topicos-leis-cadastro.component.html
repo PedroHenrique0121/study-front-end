@@ -1,0 +1,50 @@
+<app-card-title title="Cadastro de Topicos/Leis"> </app-card-title>
+<mat-card>
+
+    <div class="container">
+        <form [formGroup]="formulario" #formDir="ngForm" class="example-form" (ngSubmit)="onSubmit()">
+
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Pesquise por um Assunto</mat-label>
+                <input type="text" matInput formControlName="descricaoAssunto" [matAutocomplete]="auto"
+                    (ngModelChange)="buscarPorDescricao()" [(ngModel)]="descricaoAssuntoPesquisa">
+                <mat-icon matSuffix>search</mat-icon>
+                <!-- <mat-error *ngIf="descricaoD?.hasError('required')">È necessario escolher uma disciplina</mat-error> -->
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option>--</mat-option>
+                    <mat-option (onSelectionChange)="setarAssuntoEscolhido(assunto.id,assunto.descricao)"
+                        *ngFor="let assunto of a " [value]="assunto.descricao" >
+                        {{assunto.descricao}}
+                    </mat-option>
+                   
+                </mat-autocomplete>
+
+            </mat-form-field>
+            <p>Assunto escolhido : <strong>{{descricaoAssunto}}</strong></p>
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label> Topico/Lei </mat-label>
+                <input matInput formControlName="descricao" [(ngModel)]="topicoLei.descricao"
+                    placeholder="Informe a descrição do topico/lei">
+
+                <mat-error *ngIf="descricao?.hasError('required') ">
+                    Topiicos/Leis is <strong>required</strong>
+                </mat-error>
+
+            </mat-form-field>
+            <button mat-raised-button [ngStyle]="{marginRight:'10px', marginBottom:'4px'}"
+                color="primary">Cadastrar</button>
+            <button mat-button type="button" color="primary" (click)="listar()">Topicos/Leis</button>
+
+
+            <!-- <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Leave a comment</mat-label>
+                <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+            </mat-form-field> -->
+
+            <!-- <mat-hint>{{disciplinaId?.value?.sound}}</mat-hint> -->
+        </form>
+    </div>
+
+</mat-card>

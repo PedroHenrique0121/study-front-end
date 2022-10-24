@@ -31,10 +31,12 @@ export class DisciplinaService {
     return this.httpcliente.get<DisciplinaPage>(environment.apiURL + `/disciplinas/search/pagination/${descricao}?size=${size ? size : 10}&page=${page ? page : 0}`);
 
   }
+
   retornarPorDescricaoSemPaginacao(descricao: string): Observable<Disciplina[]> {
     return this.httpcliente.get<Disciplina[]>(environment.apiURL + `/disciplinas/search/${descricao}`);
 
   }
+  
   retornarTodas(page: number, size: number): Observable<DisciplinaPage> {
     return this.httpcliente.get<DisciplinaPage>(environment.apiURL + `/disciplinas/pagination?size=${size ? size : 7}&page=${page ? page : 0}`);
   }

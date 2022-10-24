@@ -9,13 +9,13 @@
         </div>
         <div class="containerItens">
 
-           
-            <mat-accordion >
+
+            <mat-accordion>
                 <mat-expansion-panel [ngStyle]="{padding:'0 0 0'}" (opened)="panelOpenState = true" aria-expanded="true"
                     (closed)="panelOpenState = false">
                     <mat-expansion-panel-header>
                         <mat-panel-title>
-                            <button mat-icon-button  >
+                            <button mat-icon-button>
                                 <mat-icon>assignment_add</mat-icon>
                             </button>
                             <span>Cadastros</span>
@@ -24,21 +24,27 @@
                     </mat-expansion-panel-header>
 
                     <li routerLink="/disciplinas/cadastro" (click)="sidenav.close()">
-                        <button mat-icon-button  >
+                        <button mat-icon-button>
                             <mat-icon>format_list_bulleted_add</mat-icon>
                         </button>
                         <span>Disciplinas</span>
                     </li>
                     <li routerLink="/assuntos/cadastro" (click)="sidenav.close()">
-                        <button mat-icon-button  >
+                        <button mat-icon-button>
                             <mat-icon>format_list_bulleted_add</mat-icon>
                         </button>
                         <span>Assuntos</span>
                     </li>
+                    <li routerLink="/topicos-leis/cadastro" (click)="sidenav.close()">
+                        <button mat-icon-button>
+                            <mat-icon>format_list_bulleted_add</mat-icon>
+                        </button>
+                        <span>Topicos/Leis</span>
+                    </li>
                 </mat-expansion-panel>
             </mat-accordion>
 
-           <mat-accordion>
+            <mat-accordion>
                 <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                     <mat-expansion-panel-header>
                         <mat-panel-title>
@@ -79,7 +85,7 @@
                 </div>
 
             </div> -->
-        
+
         </div>
 
     </div>

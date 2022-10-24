@@ -26,10 +26,9 @@ export class AssuntoService {
 
   retornarPorDescricaoSemPaginacao(descricao: string):Observable<Assunto[]>{
     return this.httpcliente.get<Assunto[]>(environment.apiURL+ `/assuntos/search/pagination/${descricao}`);
-
   }
 
-  retornarTodosSempaginacao(page: number, size:number): Observable<Assunto[]> {
+  retornarTodosSempaginacao(): Observable<Assunto[]> {
     return this.httpcliente.get<Assunto[]>(environment.apiURL + `/assuntos`);
   }
 

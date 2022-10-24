@@ -18,6 +18,7 @@ export class AssuntoCadastrosComponent implements OnInit {
 
   formulario!: FormGroup;
   assunto!: Assunto;
+  
   dialogConfig!: MatDialogConfig;
   disciplinas!: Disciplina[];
   disciplinaPage!: DisciplinaPage;

@@ -25,6 +25,7 @@ import { DisciplinaService } from './services/disciplina.service';
 import { DisciplinasModule } from './disciplinas/disciplinas.module';
 import { MatCardModule } from '@angular/material/card';
 import { CardTitleComponent } from './componentes/card-title/card-title.component';
+import { TopicosLeisModule } from './topicos-leis/topicos-leis.module';
 
 
 
@@ -41,6 +42,11 @@ import { CardTitleComponent } from './componentes/card-title/card-title.componen
     AppRoutingModule,
     HttpClientModule,
     CommonModule,
+
+    DisciplinasModule,
+    AssuntosModule,
+    TopicosLeisModule,
+    
     BrowserAnimationsModule,
     MatSliderModule,
     MatToolbarModule,
@@ -53,8 +59,6 @@ import { CardTitleComponent } from './componentes/card-title/card-title.componen
     MatExpansionModule,
     MatCardModule,
     
-    DisciplinasModule,
-    AssuntosModule
   ],
     
   providers: [
