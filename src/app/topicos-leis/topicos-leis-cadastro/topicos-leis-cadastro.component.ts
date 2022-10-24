@@ -21,7 +21,7 @@ export class TopicosLeisCadastroComponent implements OnInit {
   formulario!: FormGroup;
   topicoLei!: TopicoLei;
   dialogConfig!: MatDialogConfig;
-  assuntos!: Assunto[];
+  assuntos: Assunto[]=[];
   a!: Assunto[];
 
   disciplinaPage!: DisciplinaPage;
@@ -148,12 +148,12 @@ export class TopicosLeisCadastroComponent implements OnInit {
 
   buscarPorDescricao() {
 
-    this.assuntoService.retornarPorDescricao(this.descricaoAssuntoPesquisa,0,7)
-      .subscribe(response=> {
-        this.a = response.content
+    this.assuntoService.retornarPorDescricaoSemPaginacao(this.descricaoAssuntoPesquisa)
+      .subscribe((response)=> {
+        this.a = response;
 
       }, errorResponse => {
-
+         console.log(errorResponse)
       })
   }
 }
