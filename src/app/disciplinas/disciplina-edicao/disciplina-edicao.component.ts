@@ -74,7 +74,7 @@ export class DisciplinaEdicaoComponent implements OnInit {
       return;
     }
 
-    console.log(this.disciplina)
+   
     this.disciplinaService.editar(this.disciplina)
       .subscribe(response => {
 
@@ -105,7 +105,6 @@ export class DisciplinaEdicaoComponent implements OnInit {
         })
       })
   }
-
   fechar() {
     this.router.navigate(["/disciplinas/lista"])
   }

@@ -23,11 +23,15 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TopicoLeiServiceService } from '../services/topico-lei-service.service';
 import { RouterModule } from '@angular/router';
+import { TopicosLeisListaComponent } from './topicos-leis-lista/topicos-leis-lista.component';
+import { TopicosLeisEdicaoComponent } from './topicos-leis-edicao/topicos-leis-edicao.component';
 
 
 @NgModule({
   declarations: [
-    TopicosLeisCadastroComponent
+    TopicosLeisCadastroComponent,
+    TopicosLeisListaComponent,
+    TopicosLeisEdicaoComponent
   ],
   imports: [
     CommonModule,
@@ -50,7 +54,9 @@ import { RouterModule } from '@angular/router';
     MatProgressSpinnerModule,
   ],
   exports: [
-    TopicosLeisCadastroComponent
+    TopicosLeisCadastroComponent,
+    TopicosLeisListaComponent,
+    TopicosLeisEdicaoComponent
   ],
   providers: [
     TopicoLeiServiceService

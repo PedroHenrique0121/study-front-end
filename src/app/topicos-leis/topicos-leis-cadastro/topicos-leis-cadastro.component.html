@@ -14,10 +14,10 @@
                 <mat-autocomplete #auto="matAutocomplete">
                     <mat-option>--</mat-option>
                     <mat-option (onSelectionChange)="setarAssuntoEscolhido(assunto.id,assunto.descricao)"
-                        *ngFor="let assunto of a " [value]="assunto.descricao" >
+                        *ngFor="let assunto of assuntos " [value]="assunto.descricao">
                         {{assunto.descricao}}
                     </mat-option>
-                   
+
                 </mat-autocomplete>
 
             </mat-form-field>

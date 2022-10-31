@@ -50,7 +50,7 @@ export class AssuntoEdicaoComponent implements OnInit {
 
     this.id?.disable();
     // this.getDescricaoDisciplina?.disable()
-    this.descricaoDisciplinaEscolhida = this.assunto.disciplina.descricao
+   
   }
 
   get id() {
@@ -74,6 +74,10 @@ export class AssuntoEdicaoComponent implements OnInit {
     const state = this.location.getState() as A;
     if (state.assunto != undefined) {
       this.assunto = state.assunto;
+      this.disciplina = new Disciplina();
+      this.disciplina= state.assunto.disciplina
+      this.descricaoDisciplinaEscolhida =this.disciplina.descricao
+      this.descricaoDisciplinaPesquisa= this.disciplina.descricao
     } else {
       this.router.navigate(["/assuntos/lista"])
 
@@ -85,7 +89,7 @@ export class AssuntoEdicaoComponent implements OnInit {
       return;
     }
 
-    console.log(this.assunto)
+    this.assunto.disciplinaId = this.assunto.disciplina.id
     this.assuntoService.editar(this.assunto)
       .subscribe(response => {
 
@@ -141,6 +145,7 @@ export class AssuntoEdicaoComponent implements OnInit {
     this.assunto.disciplinaId = id;
     this.assunto.disciplina.descricao = descricao;
     this.assunto.disciplina.id = id;
+    console.log(this.assunto)
   }
 
   cancelar() {

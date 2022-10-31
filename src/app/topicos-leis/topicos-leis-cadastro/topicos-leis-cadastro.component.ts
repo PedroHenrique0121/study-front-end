@@ -21,8 +21,8 @@ export class TopicosLeisCadastroComponent implements OnInit {
   formulario!: FormGroup;
   topicoLei!: TopicoLei;
   dialogConfig!: MatDialogConfig;
-  assuntos: Assunto[]=[];
-  a!: Assunto[];
+  assuntos: Assunto[] = [];
+
 
   disciplinaPage!: DisciplinaPage;
   descricaoAssuntoPesquisa!: string
@@ -37,7 +37,7 @@ export class TopicosLeisCadastroComponent implements OnInit {
 
   ) {
     this.topicoLei = new TopicoLei();
-    
+
   }
 
   ngOnInit(): void {
@@ -82,46 +82,46 @@ export class TopicosLeisCadastroComponent implements OnInit {
     } else {
 
       console.log(this.topicoLei)
-      // this.topicoLieiSercvice.salvar(this.topicoLei).
-      //   subscribe(response => {
-      //     this.dialog.open(DialogComponent, {
-      //       disableClose: true,
-      //       height: "200px",
-      //       width: "400px",
-      //       data: {
-      //         msg: "Topico/Lei cadastrado com sucesso!",
-      //         icon: "check_circle"
-      //       }
-      //     })
+      this.topicoLieiSercvice.salvar(this.topicoLei).
+        subscribe(response => {
+          this.dialog.open(DialogComponent, {
+            disableClose: true,
+            height: "200px",
+            width: "400px",
+            data: {
+              msg: "Topico/Lei cadastrado com sucesso!",
+              icon: "check_circle"
+            }
+          })
 
-      //     this.formulario.reset()
-      //     this.descricaoAssunto = ""
-      //   }, errorResponse => {
-      //     console.log(errorResponse)
-      //     this.dialog.open(DialogComponent, {
-      //       disableClose: true,
-      //       height: "200px",
-      //       width: "400px",
-      //       data: {
-      //         msg: errorResponse.error.titulo ? errorResponse.error.titulo : "Não foi possivel realizar o cadastro",
-      //         icon: "gpp_bad"
-      //       }
+          this.formulario.reset()
+          this.descricaoAssunto = ""
+        }, errorResponse => {
+          console.log(errorResponse)
+          this.dialog.open(DialogComponent, {
+            disableClose: true,
+            height: "200px",
+            width: "400px",
+            data: {
+              msg: errorResponse.error.titulo ? errorResponse.error.titulo : "Não foi possivel realizar o cadastro",
+              icon: "gpp_bad"
+            }
 
-      //     })
-      //   })
+          })
+        })
 
     }
   }
 
   listar() {
-    this.router.navigate(["/assuntos/lista"])
+    this.router.navigate(["/topicos-leis/lista"])
   }
 
   buscarPorTodosassuntos() {
     this.assuntoService.retornarTodosSempaginacao()
       .subscribe(response => {
 
-        this.a = response
+        this.assuntos = response
 
       }, errorResponse => {
 
@@ -141,19 +141,19 @@ export class TopicosLeisCadastroComponent implements OnInit {
     console.log(id, descricao)
     this.assuntoId?.setValue(id)
     let assunto = new Assunto();
-    assunto.id=id
-    this.topicoLei.assunto= assunto
+    assunto.id = id
+    this.topicoLei.assunto = assunto
     this.topicoLei.assuntoId = id
   }
 
   buscarPorDescricao() {
 
     this.assuntoService.retornarPorDescricaoSemPaginacao(this.descricaoAssuntoPesquisa)
-      .subscribe((response)=> {
-        this.a = response;
+      .subscribe((response) => {
+        this.assuntos = response;
 
       }, errorResponse => {
-         console.log(errorResponse)
+        console.log(errorResponse)
       })
   }
 }

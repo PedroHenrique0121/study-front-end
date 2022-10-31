@@ -1,0 +1,43 @@
+<div class="layoute">
+
+    <div class="layoute">
+        <app-title-list title="Topicos/Leis"></app-title-list>
+        <div class="centralizar">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Pesquise por um topico ou lei...</mat-label>
+                <input type="text" matInput (ngModelChange)="buscarPorDescricao()"
+                    [(ngModel)]="descricaoTopicoLeiPesquisa">
+                <mat-icon matSuffix>search</mat-icon>
+                <!-- <mat-error *ngIf="descricaoD?.hasError('required')">È necessario escolher uma disciplina</mat-error> -->
+            </mat-form-field>
+            <mat-progress-spinner *ngIf="!topicoLeiPage || topicosLeis?.length==0" diameter="40" mode="indeterminate"
+                value=75></mat-progress-spinner>
+        </div>
+
+        <div class="assuntos" *ngFor="let topicoLei of topicosLeis">
+            <h1>
+                <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
+                    <mat-icon>pending</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button at-icon-button mat-menu-item (click)="editar(topicoLei)">
+                        <mat-icon>edit</mat-icon> Editar
+                    </button>
+                    <button at-icon-button mat-menu-item (click)="excluir(topicoLei)">
+                        <mat-icon>delete</mat-icon> Excluir
+                    </button>
+                </mat-menu>
+                {{topicoLei.descricao}}
+            </h1>
+
+        </div>
+    </div>
+
+    <mat-paginator [length]="topicoLeiPage?topicoLeiPage.totalElements: 7" [disabled]=""
+        [pageSizeOptions]="[7, 10, (topicoLeiPage?topicoLeiPage.totalElements: 30 /2)]"
+        (page)="pegaMudancaPaginacao($event)" aria-label="Select page">
+    </mat-paginator>
+
+</div>
+
+<!-- pending -->
