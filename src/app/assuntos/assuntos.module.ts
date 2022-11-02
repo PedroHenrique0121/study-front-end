@@ -18,6 +18,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { AssuntoListaComponent } from './assunto-lista/assunto-lista.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 import { AssuntoEdicaoComponent } from './assunto-edicao/assunto-edicao.component';
 @NgModule({
   declarations: [

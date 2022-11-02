@@ -24,7 +24,7 @@ export class TopicoLeiServiceService {
   }
 
   retornarPorDescricaoSemPaginacao(descricao: string): Observable<TopicoLei[]> {
-    return this.httpcliente.get<TopicoLei[]>(environment.apiURL + `/topicosLeis/search/pagination/${descricao}`);
+    return this.httpcliente.get<TopicoLei[]>(environment.apiURL + `/topicosLeis/search/${descricao}`);
   }
 
   retornarTodosSempaginacao(): Observable<TopicoLei[]> {

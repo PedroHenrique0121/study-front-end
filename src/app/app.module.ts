@@ -26,6 +26,7 @@ import { DisciplinasModule } from './disciplinas/disciplinas.module';
 import { MatCardModule } from '@angular/material/card';
 import { CardTitleComponent } from './componentes/card-title/card-title.component';
 import { TopicosLeisModule } from './topicos-leis/topicos-leis.module';
+import { ArtigosModule } from './artigos/artigos.module';
 
 
 
@@ -46,6 +47,7 @@ import { TopicosLeisModule } from './topicos-leis/topicos-leis.module';
     DisciplinasModule,
     AssuntosModule,
     TopicosLeisModule,
+    ArtigosModule,
     
     BrowserAnimationsModule,
     MatSliderModule,

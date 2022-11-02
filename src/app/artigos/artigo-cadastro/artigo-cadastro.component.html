@@ -1,0 +1,67 @@
+<app-card-title title="Cadastro de Artigos"> </app-card-title>
+<mat-card>
+
+    <div class="container">
+        <form [formGroup]="formulario" #formDir="ngForm" class="example-form" (ngSubmit)="onSubmit()">
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Selecione por um topico ou Lei</mat-label>
+                <input type="text" placeholder="Pesquise por um topico ou lei" matInput formControlName="descricaoTopicoLei" [matAutocomplete]="auto"
+                    (ngModelChange)="buscarPorDescricao()" [(ngModel)]="descricaoTopicoLeiPesquisa">
+                <mat-icon matSuffix>search</mat-icon>
+                <!-- <mat-error *ngIf="descricaoD?.hasError('required')">È necessario escolher uma disciplina</mat-error> -->
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option>--</mat-option>
+                    <mat-option (onSelectionChange)="setarIdTopicoLeiEscolhido(topicoLei.id,topicoLei.descricao)"
+                        *ngFor="let topicoLei of topicosLeis " [value]="topicoLei.descricao">
+                        {{topicoLei.descricao}}
+                    </mat-option>
+                </mat-autocomplete>
+
+            </mat-form-field>
+            <p>Topico/Lei escolhido : <strong>{{descricaoTopicoLei}}</strong></p>
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label> Descrição do artigo </mat-label>
+                <textarea matInput  placeholder="Informe a descrição do artigo" formControlName="descricao" [(ngModel)]="artigo.descricao"></textarea>
+                   
+                <mat-error *ngIf="descricao?.hasError('required') ">
+                    Descricao is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label> Numero do artigo </mat-label>
+                <input matInput  formControlName="numero" [(ngModel)]="artigo.numero"
+                    placeholder="Informe o numero do artigo">
+                <mat-error *ngIf="descricao?.hasError('required') ">
+                    Numero is <strong>required</strong>
+                </mat-error>
+               
+            </mat-form-field>
+            
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label> Categoria do artigo </mat-label>
+                <input matInput formControlName="categoria" [(ngModel)]="artigo.categoria"
+                    placeholder="Informe a categoria do assunto">
+                <mat-error *ngIf="descricao?.hasError('required') ">
+                    Descricao is <strong>required</strong>
+                </mat-error>
+                
+            </mat-form-field>
+
+            <button mat-raised-button [ngStyle]="{marginRight:'10px', marginBottom:'4px'}" color="primary">Cadastrar
+            </button>
+            <button mat-button type="button" color="primary" (click)="listar()">Assuntos</button>
+
+
+            <!-- <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Leave a comment</mat-label>
+                <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+            </mat-form-field> -->
+
+            <!-- <mat-hint>{{disciplinaId?.value?.sound}}</mat-hint> -->
+        </form>
+    </div>
+
+</mat-card>
