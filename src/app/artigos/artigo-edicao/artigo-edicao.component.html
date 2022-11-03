@@ -1,12 +1,17 @@
 
-<app-card-title  title="Edição de Assuntos"></app-card-title>
+<app-card-title  title="Edição de Artigos"></app-card-title>
+
+<div class="scroll"> 
+
+
 <mat-card>
+
 <div class="container">
 
     <form [formGroup]="formulario" #formDir="ngForm"  (submit)="onSubmit()" class="example-form" >
 
         <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label>Codigo do Assunto</mat-label>
+            <mat-label>Codigo do Artigo</mat-label>
             <input matInput  formControlName="id"  [(ngModel)]="artigo.id">
 
             <!-- <mat-error *ngIf="descricao?.hasError('minlength') ">
@@ -41,9 +46,9 @@
         <p>Disciplina escolhida : <strong>{{descricaoTopicoLeiEscolhido}}</strong></p>
 
         <mat-form-field   class="example-full-width" appearance="outline">
-            <mat-label>Assunto</mat-label>
-            <input matInput formControlName="descricao" [(ngModel)]="artigo.descricao"
-                placeholder="Informe a descrição do assunto" dis>
+            <mat-label>Artigo</mat-label>
+            <textarea matInput formControlName="descricao" [(ngModel)]="artigo.descricao"
+                placeholder="Informe a descrição do Artigo" dis></textarea>
 
             <mat-error *ngIf="descricao?.hasError('required') ">
                 Artigo is <strong>required</strong>
@@ -86,3 +91,4 @@
     </form>
 </div>
 </mat-card>
+</div>

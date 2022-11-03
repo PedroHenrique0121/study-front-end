@@ -14,7 +14,6 @@ import { Artigo, ArtigoPage } from '../Artigo';
 
  export type A={
        artigo: Artigo,
-
  }
 
  

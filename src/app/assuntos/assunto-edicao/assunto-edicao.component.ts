@@ -71,11 +71,13 @@ export class AssuntoEdicaoComponent implements OnInit {
   verificaEdicao() {
 
     this.assunto = new Assunto();
+    this.disciplina = new Disciplina();
     const state = this.location.getState() as A;
     if (state.assunto != undefined) {
       this.assunto = state.assunto;
-      this.disciplina = new Disciplina();
+      
       this.disciplina= state.assunto.disciplina
+      this.assunto.disciplinaId= this.disciplina.id
       this.descricaoDisciplinaEscolhida =this.disciplina.descricao
       this.descricaoDisciplinaPesquisa= this.disciplina.descricao
     } else {
@@ -89,7 +91,6 @@ export class AssuntoEdicaoComponent implements OnInit {
       return;
     }
 
-    this.assunto.disciplinaId = this.assunto.disciplina.id
     this.assuntoService.editar(this.assunto)
       .subscribe(response => {
 
@@ -132,8 +133,7 @@ export class AssuntoEdicaoComponent implements OnInit {
   }
 
   setarIdDisciplinaEscolhida(id: number, descricao: string) {
-    this.assunto.disciplinaId = id
-
+  
     if (descricao.length > 40) {
       this.descricaoDisciplinaEscolhida = descricao
       this.descricaoDisciplinaEscolhida = this.descricaoDisciplinaEscolhida.substring(0, 40)
@@ -141,11 +141,11 @@ export class AssuntoEdicaoComponent implements OnInit {
     } else {
       this.descricaoDisciplinaEscolhida = descricao
     }
-    this.disciplinaId?.setValue(id);
+    
     this.assunto.disciplinaId = id;
     this.assunto.disciplina.descricao = descricao;
     this.assunto.disciplina.id = id;
-    console.log(this.assunto)
+   
   }
 
   cancelar() {
