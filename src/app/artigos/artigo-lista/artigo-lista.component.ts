@@ -68,7 +68,7 @@ export class ArtigoListaComponent implements OnInit {
 
   editar(artigo: Artigo) {
 
-    this.router.navigate(["/artigos/editar"], { state: { artigo: artigo } })
+    this.router.navigate(["/artigos/edicao"], { state: { artigo: artigo } })
 
   }
 

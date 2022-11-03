@@ -43,7 +43,7 @@
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label> Categoria do artigo </mat-label>
                 <input matInput formControlName="categoria" [(ngModel)]="artigo.categoria"
-                    placeholder="Informe a categoria do assunto">
+                    placeholder="Informe a categoria do artigo">
                 <mat-error *ngIf="descricao?.hasError('required') ">
                     Descricao is <strong>required</strong>
                 </mat-error>
@@ -52,7 +52,7 @@
 
             <button mat-raised-button [ngStyle]="{marginRight:'10px', marginBottom:'4px'}" color="primary">Cadastrar
             </button>
-            <button mat-button type="button" color="primary" (click)="listar()">Assuntos</button>
+            <button mat-button type="button" color="primary" (click)="listar()">Artigos</button>
 
 
             <!-- <mat-form-field class="example-full-width" appearance="fill">
