@@ -83,6 +83,7 @@ export class ArtigoCadastroComponent implements OnInit {
     if (this.formulario.invalid) {
       return;
     } else {
+
       this.artigoService.salvar(this.artigo).
         subscribe(response => {
           this.dialog.open(DialogComponent, {
@@ -97,6 +98,7 @@ export class ArtigoCadastroComponent implements OnInit {
 
           this.formulario.reset()
           this.descricaoTopicoLei = ""
+
         }, errorResponse => {
           console.log(errorResponse)
           this.dialog.open(DialogComponent, {
@@ -118,16 +120,13 @@ export class ArtigoCadastroComponent implements OnInit {
   }
 
   listar() {
-
     this.router.navigate(["/artigos/lista"])
   }
 
   buscarPorTodastopicoLeis() {
     this.topicoLeiService.retornarTodosSempaginacao()
       .subscribe(response => {
-
         this.topicosLeis = response
-
       }, errorResponse => {
 
       })
@@ -136,7 +135,6 @@ export class ArtigoCadastroComponent implements OnInit {
 
   setarIdTopicoLeiEscolhido(id: number, descricao: string) {
     this.artigo.topicoLeiId = id
-
     if (descricao.length > 40) {
       this.descricaoTopicoLei = descricao
       this.descricaoTopicoLei = this.descricaoTopicoLei.substring(0, 40)
@@ -146,6 +144,7 @@ export class ArtigoCadastroComponent implements OnInit {
     }
     this.topicoLeiId?.setValue(id)
   }
+  
   buscarPorDescricao() {
 
     this.topicoLeiService.retornarPorDescricaoSemPaginacao(this.descricaoTopicoLeiPesquisa)

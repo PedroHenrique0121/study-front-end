@@ -18,10 +18,15 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ComponentesModule } from '../componentes/componentes.module';
+import { ArtigoEdicaoComponent } from './artigo-edicao/artigo-edicao.component';
+import { ArtigoListaComponent } from './artigo-lista/artigo-lista.component';
+
 
 @NgModule({
   declarations: [
-    ArtigoCadastroComponent
+    ArtigoCadastroComponent,
+    ArtigoEdicaoComponent,
+   ArtigoListaComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +48,9 @@ import { ComponentesModule } from '../componentes/componentes.module';
     MatProgressSpinnerModule,
   ]
   ,exports:[
-    ArtigoCadastroComponent
+    ArtigoCadastroComponent,
+    ArtigoEdicaoComponent,
+    ArtigoListaComponent
   ]
   ,providers:[
     ArtigoService

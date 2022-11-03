@@ -18,6 +18,10 @@ export class ArtigoService {
     return this.httpcliente.put<Artigo>(environment.apiURL + `/artigos/editar/${artigo.id}`, artigo);
   }
 
+  retornarRelacaoComTopicoLei(id: number): Observable<ArtigoPage>{
+     return this.httpcliente.get<ArtigoPage>(environment.apiURL + `/artigos/topicoLei/${id}`);
+  }
+
   retornarPorDescricao(descricao: string, page: number, size: number): Observable<ArtigoPage> {
     return this.httpcliente.get<ArtigoPage>(environment.apiURL + `/artigos/search/pagination/${descricao}?size=${size}&page=${page}`);
 
