@@ -43,11 +43,17 @@ export class DisciplinaCadastroComponent implements OnInit {
     return this.formulario.get("descricao");
   }
 
+  listar(){
+    this.router.navigate(["/disciplinas/lista"])
+  }
+
   onSubmit() {
     
     if (this.formulario.invalid) {
       return;
     }
+
+    
 
     this.disciplina.userId=11
     this.disciplinaService.salvar(this.disciplina).
@@ -79,8 +85,5 @@ export class DisciplinaCadastroComponent implements OnInit {
     })
   }
 
-  listar(){
-
-    this.router.navigate(["/disciplinas/lista"])
-  }
+  
 }

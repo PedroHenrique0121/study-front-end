@@ -27,6 +27,7 @@ import { MatCardModule } from '@angular/material/card';
 import { CardTitleComponent } from './componentes/card-title/card-title.component';
 import { TopicosLeisModule } from './topicos-leis/topicos-leis.module';
 import { ArtigosModule } from './artigos/artigos.module';
+import { PenasModule } from './penas/penas.module';
 
 
 
@@ -48,6 +49,7 @@ import { ArtigosModule } from './artigos/artigos.module';
     AssuntosModule,
     TopicosLeisModule,
     ArtigosModule,
+    PenasModule,
     
     BrowserAnimationsModule,
     MatSliderModule,

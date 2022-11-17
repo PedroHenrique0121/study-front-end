@@ -37,7 +37,7 @@ export class TopicosLeisCadastroComponent implements OnInit {
 
   ) {
     this.topicoLei = new TopicoLei();
-
+  this.buscarPorDescricao()
   }
 
   ngOnInit(): void {
@@ -130,6 +130,8 @@ export class TopicosLeisCadastroComponent implements OnInit {
   }
 
   setarAssuntoEscolhido(id: number, descricao: string) {
+
+    console.log(id, descricao )
     if (descricao.length > 40) {
       this.descricaoAssunto = descricao
       this.descricaoAssunto = this.descricaoAssunto.substring(0, 40)
@@ -148,7 +150,7 @@ export class TopicosLeisCadastroComponent implements OnInit {
 
   buscarPorDescricao() {
 
-    this.assuntoService.retornarPorDescricaoSemPaginacao(this.descricaoAssuntoPesquisa)
+    this.assuntoService.retornarTodosSempaginacao()
       .subscribe((response) => {
         this.assuntos = response;
 

@@ -25,6 +25,14 @@
     font-family: Arial;
 }
 
+.penas{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 7px;
+    font-family: Arial;
+}
+
 p{
     word-break: break-all;
     word-wrap: break-word;
