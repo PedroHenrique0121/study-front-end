@@ -67,9 +67,7 @@ export class ArtigoListaComponent implements OnInit {
   }
 
   editar(artigo: Artigo) {
-
     this.router.navigate(["/artigos/edicao"], { state: { artigo: artigo } })
-
   }
 
   excluir(artigo: Artigo) {
@@ -105,8 +103,7 @@ export class ArtigoListaComponent implements OnInit {
   }
 
   buscarPorDescricao(page?: number, size?: number) {
-
-    this.artigoService.retornarPorDescricao(this.descricaoArtigoPesquisa, page ? page : 0, size ? size : 7)
+    this.artigoService.retornarPorDescricaoAssociadoTopicoLei(this.descricaoArtigoPesquisa, this.topicoLei.id,page ? page : 0, size ? size : 7)
       .subscribe(response => {
         this.artigoPage = response
         this.artigos = this.artigoPage.content
@@ -125,9 +122,8 @@ export class ArtigoListaComponent implements OnInit {
       })
   }
 
-  setarIdTopicoLeiEscolhido(id: number, descricao: string) {
-    this.topicoLei.id = id
-    this.topicoLei.descricao = descricao;
+  setarIdTopicoLeiEscolhido(topicoLei: TopicoLei) {
+    this.topicoLei= topicoLei;
     this.artigoService.retornarRelacaoComTopicoLei(this.topicoLei.id)
       .subscribe((response)=>{
           this.artigoPage= response;

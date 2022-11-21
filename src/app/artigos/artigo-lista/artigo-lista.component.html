@@ -13,7 +13,7 @@
                 <!-- <mat-error *ngIf="descricaoD?.hasError('required')">È necessario escolher uma disciplina</mat-error> -->
                 <mat-autocomplete #auto="matAutocomplete">
                     <mat-option>--</mat-option>
-                    <mat-option (onSelectionChange)="setarIdTopicoLeiEscolhido(topicoLei.id,topicoLei.descricao)"
+                    <mat-option (onSelectionChange)="setarIdTopicoLeiEscolhido(topicoLei)"
                         *ngFor="let topicoLei of topicosLeis " [value]="topicoLei.descricao">
                         {{topicoLei.descricao}}
                     </mat-option>
@@ -47,9 +47,12 @@
                 </mat-menu>
                 {{artigo.numero}} {{"º - "}} {{artigo.descricao}}
             </p>
-           
-               
-            
+
+            <div *ngFor="let pena of artigo.penas">
+                  <p>Pena: </p>
+                  <p>- {{pena.descricao}}</p>
+            </div>
+
             
         </div>
     </div>

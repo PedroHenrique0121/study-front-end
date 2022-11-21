@@ -26,14 +26,14 @@
                 <!-- <mat-error *ngIf="descricaoD?.hasError('required')">È necessario escolher uma disciplina</mat-error> -->
                 <mat-autocomplete #auto="matAutocomplete">
                     <mat-option>--</mat-option>
-                    <mat-option (onSelectionChange)="setarIdDisciplinaEscolhida(disciplina.id,disciplina.descricao)"
+                    <mat-option (onSelectionChange)="setarIdDisciplinaEscolhida(disciplina)"
                         *ngFor="let disciplina of disciplinas " [value]="disciplina.descricao">
                         {{disciplina.descricao}}
                     </mat-option>
                 </mat-autocomplete>
 
             </mat-form-field>
-            <p>Disciplina escolhida : <strong>{{descricaoDisciplina}}</strong></p>
+            <p>Disciplina escolhida : <strong>{{disciplina.descricao}}</strong></p>
 
             <!-- <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Number</mat-label>

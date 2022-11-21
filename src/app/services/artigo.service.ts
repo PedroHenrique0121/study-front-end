@@ -22,9 +22,8 @@ export class ArtigoService {
      return this.httpcliente.get<ArtigoPage>(environment.apiURL + `/artigos/topicoLei/${id}`);
   }
 
-  retornarPorDescricao(descricao: string, page: number, size: number): Observable<ArtigoPage> {
-    return this.httpcliente.get<ArtigoPage>(environment.apiURL + `/artigos/search/pagination/${descricao}?size=${size}&page=${page}`);
-
+  retornarPorDescricaoAssociadoTopicoLei(descricao: string, topicoLeiId: number, page: number, size: number): Observable<ArtigoPage> {
+    return this.httpcliente.get<ArtigoPage>(environment.apiURL + `/artigos/search/pagination/${descricao}/${topicoLeiId}?size=${size}&page=${page}`);
   }
 
   retornarPorDescricaoSemPaginacao(descricao: string): Observable<Artigo[]> {

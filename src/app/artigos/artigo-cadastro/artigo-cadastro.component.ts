@@ -145,8 +145,7 @@ export class ArtigoCadastroComponent implements OnInit {
     this.topicoLeiId?.setValue(id)
   }
   
-  buscarPorDescricao() {
-
+  buscarTopicoLeiPorDescricao() {
     this.topicoLeiService.retornarPorDescricaoSemPaginacao(this.descricaoTopicoLeiPesquisa)
       .subscribe(response => {
         this.topicosLeis = response;

@@ -18,13 +18,13 @@ export class AssuntoCadastrosComponent implements OnInit {
 
   formulario!: FormGroup;
   assunto!: Assunto;
-  
+
   dialogConfig!: MatDialogConfig;
+  disciplina!: Disciplina;
   disciplinas!: Disciplina[];
   disciplinaPage!: DisciplinaPage;
   descricaoDisciplinaPesquisa!: string
 
-  descricaoDisciplina!: string;
 
   constructor(private fb: FormBuilder,
     private assuntoService: AssuntoService,
@@ -33,7 +33,7 @@ export class AssuntoCadastrosComponent implements OnInit {
     private disciplinaService: DisciplinaService
   ) {
     this.assunto = new Assunto();
-
+    this.disciplina = new Disciplina();
   }
 
   ngOnInit(): void {
@@ -89,7 +89,7 @@ export class AssuntoCadastrosComponent implements OnInit {
           })
 
           this.formulario.reset()
-          this.descricaoDisciplina = ""
+
         }, errorResponse => {
           console.log(errorResponse)
           this.dialog.open(DialogComponent, {
@@ -103,50 +103,38 @@ export class AssuntoCadastrosComponent implements OnInit {
 
           })
         })
-
     }
-
-
-
   }
 
   listar() {
-
     this.router.navigate(["/assuntos/lista"])
   }
 
   buscarPorTodasDisciplinas() {
     this.disciplinaService.retornarTodasSemPaginacao()
       .subscribe(response => {
-
         this.disciplinas = response
-
-      }, errorResponse => {
-
-      })
-
+      }, errorResponse => { })
   }
 
-  setarIdDisciplinaEscolhida(id: number, descricao: string) {
-    this.assunto.disciplinaId = id
+  setarIdDisciplinaEscolhida(disciplina: Disciplina) {
+    this.assunto.disciplinaId = disciplina.id;
+    this.disciplina = disciplina;
 
-    if (descricao.length > 40) {
-      this.descricaoDisciplina = descricao
-      this.descricaoDisciplina = this.descricaoDisciplina.substring(0, 40)
-      this.descricaoDisciplina = this.descricaoDisciplina.concat("...")
+    if (disciplina.descricao.length > 40) {
+      this.disciplina.descricao = disciplina.descricao
+      this.disciplina.descricao = this.disciplina.descricao.substring(0, 40)
+      this.disciplina.descricao = this.disciplina.descricao.concat("...")
     } else {
-      this.descricaoDisciplina = descricao
+      this.disciplina.descricao = disciplina.descricao
     }
-    this.disciplinaId?.setValue(id)
+    this.disciplinaId?.setValue(disciplina.id)
   }
-  buscarPorDescricao() {
 
+  buscarPorDescricao() {
     this.disciplinaService.retornarPorDescricaoSemPaginacao(this.descricaoDisciplinaPesquisa)
       .subscribe(response => {
         this.disciplinas = response;
-
-      }, errorResponse => {
-
-      })
+      }, errorResponse => { })
   }
 }

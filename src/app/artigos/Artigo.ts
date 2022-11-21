@@ -1,3 +1,4 @@
+import { Pena } from "../penas/Pena";
 import { TopicoLei } from "../topicos-leis/TopicoLei";
 
 export class Artigo {
@@ -8,6 +9,7 @@ export class Artigo {
     categoria!: string;
     topicoLei!: TopicoLei;
     topicoLeiId!: number;
+    penas!: Pena[];
 }
 
 export type ArtigoPage = {

@@ -23,6 +23,7 @@
     justify-content: center;
     margin-top: 10px;
     font-family: Arial;
+    flex-direction: column;
 }
 
 .penas{
