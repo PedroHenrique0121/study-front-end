@@ -83,6 +83,7 @@ export class PenasCadastroComponent implements OnInit {
             }
           })
           this.formulario.reset()
+          this.artigo.descricao=""
         }, errorResponse => {
           console.log(errorResponse)
           this.dialog.open(DialogComponent, {

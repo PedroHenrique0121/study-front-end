@@ -1,0 +1,52 @@
+.container{
+
+    display: flex;
+   
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    height:calc(100vh -64px);
+    width: 90vw;
+    max-width: 90;
+    margin-top: 30px;
+   
+}
+
+.containerAcordion{
+    display: flex;
+
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+  
+    width: 90vw;
+   
+}
+/* .mat-panel-description{
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+}
+.mat-panel-title{
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+} */
+
+ 
+  .mat-expansion-panel-header-title, .mat-expansion-panel-header-description {
+    display: flex;
+    /* flex-grow: 1; */
+   
+    align-items: center;
+    justify-content: center;
+   
+}
+
+.mat-expansion-panel-header {
+    height: 40px;
+}

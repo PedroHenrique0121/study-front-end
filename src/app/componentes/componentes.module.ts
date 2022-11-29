@@ -4,21 +4,29 @@ import { CardTitleComponent } from './card-title/card-title.component';
 import { MatCardModule } from '@angular/material/card';
 import { TitleListComponent } from './title-list/title-list.component';
 
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+
 
 
 @NgModule({
   declarations: [
     CardTitleComponent,
-    TitleListComponent
+    TitleListComponent,
+   
   ],
   imports: [
     CommonModule,
-    MatCardModule
+
+    MatCardModule,
+    MatExpansionModule,
+    MatIconModule
   ]
   ,
   exports:[
     CardTitleComponent,
-    TitleListComponent
+    TitleListComponent,
+   
   ]
 })
 export class ComponentesModule { }

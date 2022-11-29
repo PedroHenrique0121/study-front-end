@@ -3,6 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Assunto } from 'src/app/assuntos/Assunto';
 import { DialogComponent, DialogData } from 'src/app/componentes/dialog/dialog.component';
 import { DisciplinaService } from 'src/app/services/disciplina.service';
 import { Disciplina } from '../Disciplina';
@@ -12,7 +13,8 @@ export class D {
   disciplina!: {
     id: number
     descricao: string;
-    userId: number
+    userId: number,
+    assuntos: Assunto[]
   }
 
 }

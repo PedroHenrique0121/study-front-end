@@ -15,4 +15,8 @@ export class PenasService {
     return this.httpcliente.post<Pena>(environment.apiURL +"/penas/", pena);
   }
 
+  excluir(pena:Pena): Observable<any> {
+    return this.httpcliente.delete(environment.apiURL +`/penas/${pena.id}`);
+  }
+
 }

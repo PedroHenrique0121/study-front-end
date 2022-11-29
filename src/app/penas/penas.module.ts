@@ -19,10 +19,13 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ComponentesModule } from '../componentes/componentes.module';
+import { PenaEdicaoComponent } from './pena-edicao/pena-edicao.component';
 
 @NgModule({
   declarations: [
-    PenasCadastroComponent
+    PenasCadastroComponent,
+    PenaEdicaoComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -44,7 +47,9 @@ import { ComponentesModule } from '../componentes/componentes.module';
     MatProgressSpinnerModule,
   ],
   exports:[
-    PenasCadastroComponent
+    PenasCadastroComponent,
+    PenaEdicaoComponent,
+    
   ]
 })
 export class PenasModule { }

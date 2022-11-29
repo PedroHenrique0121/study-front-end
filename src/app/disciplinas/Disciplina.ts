@@ -1,8 +1,11 @@
+import { Assunto } from "../assuntos/Assunto";
+
 export class Disciplina {
 
     id!: number;
     descricao!: string;
     userId!: number;
+    assuntos!: Assunto[]
 }
 
 export type DisciplinaPage= {

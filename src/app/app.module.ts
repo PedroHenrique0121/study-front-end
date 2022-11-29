@@ -28,6 +28,7 @@ import { CardTitleComponent } from './componentes/card-title/card-title.componen
 import { TopicosLeisModule } from './topicos-leis/topicos-leis.module';
 import { ArtigosModule } from './artigos/artigos.module';
 import { PenasModule } from './penas/penas.module';
+import { FiltrosModule } from './filtros/filtros.module';
 
 
 
@@ -50,6 +51,7 @@ import { PenasModule } from './penas/penas.module';
     TopicosLeisModule,
     ArtigosModule,
     PenasModule,
+    FiltrosModule,
     
     BrowserAnimationsModule,
     MatSliderModule,

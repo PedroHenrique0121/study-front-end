@@ -31,8 +31,14 @@
 
             <!-- <mat-progress-spinner *ngIf="!artigoPage || artigos?.length==0" diameter="40" mode="indeterminate"value=75></mat-progress-spinner> -->
         </div>
+        <h1>
+            
+            {{topicoLei.descricao}}
 
+        </h1>
         <div class="assuntos" *ngFor="let artigo of artigos">
+
+
             <p>
                 <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
                     <mat-icon>pending</mat-icon>
@@ -47,13 +53,26 @@
                 </mat-menu>
                 {{artigo.numero}} {{"º - "}} {{artigo.descricao}}
             </p>
+            <p class="paragrafo" *ngIf="artigo.penas.length>=1">Pena: </p>
 
-            <div *ngFor="let pena of artigo.penas">
-                  <p>Pena: </p>
-                  <p>- {{pena.descricao}}</p>
+            <div class="penas" *ngFor="let pena of artigo.penas">
+
+                <p class="paragrafo">
+                    <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
+                        <mat-icon>pending</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <!-- <button at-icon-button mat-menu-item (click)="editar(pena)">
+                            <mat-icon>edit</mat-icon> Editar
+                        </button> -->
+                        <button at-icon-button mat-menu-item (click)="excluirPena(pena)">
+                            <mat-icon>delete</mat-icon> Excluir
+                        </button>
+                    </mat-menu>
+                    - {{pena.descricao}}
+                </p>
             </div>
 
-            
         </div>
     </div>
 

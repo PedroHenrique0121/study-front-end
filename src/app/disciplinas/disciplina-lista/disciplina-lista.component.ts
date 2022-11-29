@@ -63,9 +63,7 @@ export class DisciplinaListaComponent implements OnInit {
   }
 
   editar(disciplina: Disciplina) {
-
     this.router.navigate(["/disciplinas/editar"], { state: { disciplina: disciplina } })
-
   }
 
   excluir(disciplina: Disciplina) {
@@ -82,11 +80,9 @@ export class DisciplinaListaComponent implements OnInit {
           }
 
         })
-
         this.buscarPorTodasDisciplinas(0, 7);
 
       }, errorResponse => {
-
         this.matDialog.open(DialogComponent, {
           disableClose: true,
           height: "300px",

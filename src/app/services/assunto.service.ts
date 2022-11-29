@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Assunto, AssuntoPage } from '../assuntos/Assunto';
+import { Disciplina } from '../disciplinas/Disciplina';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,10 @@ export class AssuntoService {
 
   retornarTodosSempaginacao(): Observable<Assunto[]> {
     return this.httpcliente.get<Assunto[]>(environment.apiURL + `/assuntos`);
+  }
+
+  retornarTodosVinculadoDisciplina(disciplina: Disciplina): Observable<Assunto[]> {
+    return this.httpcliente.get<Assunto[]>(environment.apiURL + `/assuntos/disciplina/${disciplina.id}`);
   }
 
   retornarTodos(page: number, size: number): Observable<AssuntoPage> {

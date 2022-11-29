@@ -1,23 +1,25 @@
-.layoute{
-   
+.layoute {
+
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-   
+
     height: calc(100vh - 64px);
     width: 100vw;
     overflow-y: auto;
 }
-.centralizar{
-   
+
+.centralizar {
+
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row
 }
 
-.assuntos{
+
+.assuntos {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,17 +28,30 @@
     flex-direction: column;
 }
 
-.penas{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 7px;
-    font-family: Arial;
-}
-
-p{
+p {
     word-break: break-all;
     word-wrap: break-word;
-    margin: 0  10px;
+    margin: 0 10px;
 }
 
+.paragrafo {
+    word-break: break-all;
+    word-wrap: break-word;
+    margin: 0 10px;
+    padding: 0;
+}
+
+.penas {}
+
+.example-full-width {
+    padding: 0 10px;
+}
+
+@media (max-width: 585px) {
+    .centralizar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+}

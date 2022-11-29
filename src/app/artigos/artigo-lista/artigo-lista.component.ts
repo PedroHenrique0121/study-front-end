@@ -3,7 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { DialogComponent } from 'src/app/componentes/dialog/dialog.component';
+import { Pena } from 'src/app/penas/Pena';
 import { ArtigoService } from 'src/app/services/artigo.service';
+import { PenasService } from 'src/app/services/penas.service';
 import { TopicoLeiServiceService } from 'src/app/services/topico-lei-service.service';
 import { TopicoLei } from 'src/app/topicos-leis/TopicoLei';
 import { Artigo, ArtigoPage } from '../Artigo';
@@ -26,7 +28,8 @@ export class ArtigoListaComponent implements OnInit {
   constructor(private artigoService: ArtigoService,
     private topicoLeiService: TopicoLeiServiceService,
     private matDialog: MatDialog,
-    private router: Router) {
+    private router: Router,
+    private penaService: PenasService) {
     this.topicoLei = new TopicoLei();
   }
 
@@ -35,17 +38,12 @@ export class ArtigoListaComponent implements OnInit {
   }
 
   buscarPorTodosArtigos(page: number, size: number) {
-
     this.artigoService.retornarTodos(page, size)
       .subscribe(response => {
         this.artigoPage = response
         this.artigos = response.content
 
-      }, errorResponse => {
-
-
-      })
-
+      }, errorResponse => { })
   }
 
   pegaMudancaPaginacao(pagina: PageEvent) {
@@ -103,7 +101,7 @@ export class ArtigoListaComponent implements OnInit {
   }
 
   buscarPorDescricao(page?: number, size?: number) {
-    this.artigoService.retornarPorDescricaoAssociadoTopicoLei(this.descricaoArtigoPesquisa, this.topicoLei.id,page ? page : 0, size ? size : 7)
+    this.artigoService.retornarPorDescricaoAssociadoTopicoLei(this.descricaoArtigoPesquisa, this.topicoLei.id, page ? page : 0, size ? size : 7)
       .subscribe(response => {
         this.artigoPage = response
         this.artigos = this.artigoPage.content
@@ -123,11 +121,39 @@ export class ArtigoListaComponent implements OnInit {
   }
 
   setarIdTopicoLeiEscolhido(topicoLei: TopicoLei) {
-    this.topicoLei= topicoLei;
+    this.topicoLei = topicoLei;
     this.artigoService.retornarRelacaoComTopicoLei(this.topicoLei.id)
-      .subscribe((response)=>{
-          this.artigoPage= response;
-          this.artigos= this.artigoPage.content
+      .subscribe((response) => {
+        this.artigoPage = response;
+        this.artigos = this.artigoPage.content
       })
+  }
+
+  excluirPena(pena: Pena) {
+    this.penaService.excluir(pena).subscribe(
+      response => {
+        this.matDialog.open(DialogComponent, {
+          disableClose: true,
+          height: "200px",
+          width: "300px",
+          data: {
+            msg: "Pena excluida com sucesso!",
+            icon: "check_circle"
+          }
+        }
+        )
+      }, errorResponse => {
+        this.matDialog.open(DialogComponent, {
+          disableClose: true,
+          height: "200px",
+          width: "300px",
+          data: {
+            msg: "Não foi possivel excluir esta Pena!",
+            icon: "gpp_bad"
+          }
+        }
+        )
+      }
+    )
   }
 }

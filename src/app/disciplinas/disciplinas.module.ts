@@ -30,6 +30,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     FormsModule,
     ReactiveFormsModule,
     ComponentesModule,
+    
     MatCardModule,
     MatInputModule,
     MatButtonModule,

@@ -13,25 +13,27 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
-import {MatSelectModule} from '@angular/material/select';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ComponentesModule } from '../componentes/componentes.module';
 import { ArtigoEdicaoComponent } from './artigo-edicao/artigo-edicao.component';
 import { ArtigoListaComponent } from './artigo-lista/artigo-lista.component';
+import { PenasModule } from '../penas/penas.module';
 
 
 @NgModule({
   declarations: [
     ArtigoCadastroComponent,
     ArtigoEdicaoComponent,
-   ArtigoListaComponent
+    ArtigoListaComponent
   ],
   imports: [
     CommonModule,
     ArtigosRoutingModule,
-
+    PenasModule,
+    
     MatAutocompleteModule,
     FormsModule,
     ReactiveFormsModule,
@@ -47,12 +49,12 @@ import { ArtigoListaComponent } from './artigo-lista/artigo-lista.component';
     MatSelectModule,
     MatProgressSpinnerModule,
   ]
-  ,exports:[
+  , exports: [
     ArtigoCadastroComponent,
     ArtigoEdicaoComponent,
     ArtigoListaComponent
   ]
-  ,providers:[
+  , providers: [
     ArtigoService
   ]
 })
