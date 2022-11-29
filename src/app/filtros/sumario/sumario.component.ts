@@ -15,14 +15,34 @@ export class SumarioComponent implements OnInit {
   panelOpenStateAssunto = false;
 
   disciplinas!: Disciplina[];
+  disciplina!: Disciplina;
+  disciplinaPesquisa!: string;
   assuntos!: Assunto[];
+  assunto!: Assunto;
+  assuntoPesquisa!: string;
   artigos!: Artigo[];
 
   constructor(private disciplinaService: DisciplinaService,
-    private assuntoService: AssuntoService) { }
+    private assuntoService: AssuntoService) {
+    this.disciplina = new Disciplina()
+    this.assunto= new Assunto()
+    }
 
   ngOnInit(): void {
-    this.retornarTodasDisciplinaSemPaginacao();
+
+  }
+
+  buscarDisciplinaProDescricao() {
+    this.disciplinaService.retornarPorDescricaoSemPaginacao(this.disciplinaPesquisa)
+      .subscribe(response => {
+        this.disciplinas = response;
+      })
+  }
+
+  selecionarDisciplina(disciplina: Disciplina) {
+    this.disciplina = disciplina;
+    this.assuntos=[]
+    this.assunto= new Assunto()
   }
 
   retornarTodasDisciplinaSemPaginacao() {
@@ -32,12 +52,16 @@ export class SumarioComponent implements OnInit {
       })
   }
 
-  abrirAssuntos(disciplina: Disciplina) {
-    this.panelOpenStateAssunto = false;
-    this.assuntoService.retornarTodosVinculadoDisciplina(disciplina)
+  buscarPorassuntosRelacionadosDisciplina() {
+    this.assuntoService.retornarTodosVinculadoDisciplina(this.disciplina, this.assuntoPesquisa)
       .subscribe(response => {
         this.assuntos = response;
       })
-    return this.panelOpenStateAssunto;
   }
+
+  selecionarAssunto(assunto: Assunto) {
+    this.assunto = assunto;
+  }
+
+ 
 }

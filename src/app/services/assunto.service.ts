@@ -33,8 +33,10 @@ export class AssuntoService {
     return this.httpcliente.get<Assunto[]>(environment.apiURL + `/assuntos`);
   }
 
-  retornarTodosVinculadoDisciplina(disciplina: Disciplina): Observable<Assunto[]> {
-    return this.httpcliente.get<Assunto[]>(environment.apiURL + `/assuntos/disciplina/${disciplina.id}`);
+  retornarTodosVinculadoDisciplina(disciplina: Disciplina, assuntoPesquisa: string): Observable<Assunto[]> {
+    console.log(`/assuntos/${assuntoPesquisa}/disciplina/${disciplina.id}`)
+    
+    return this.httpcliente.get<Assunto[]>(environment.apiURL + `/assuntos/${assuntoPesquisa}/disciplina/${disciplina.id}`);
   }
 
   retornarTodos(page: number, size: number): Observable<AssuntoPage> {

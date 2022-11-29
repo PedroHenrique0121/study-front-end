@@ -1,42 +1,62 @@
-.container{
+
+.layoute {
 
     display: flex;
-   
-    align-items: center;
     justify-content: flex-start;
+    align-items: center;
     flex-direction: column;
-    height:calc(100vh -64px);
-    width: 90vw;
-    max-width: 90;
-    margin-top: 30px;
-   
+
+    height: calc(100vh - 64px);
+    width: 100vw;
+    overflow-y: auto;
 }
 
-.containerAcordion{
-    display: flex;
+.centralizar {
 
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
-  
-    width: 90vw;
-   
-}
-/* .mat-panel-description{
     display: flex;
-
     align-items: center;
     justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    margin-top: 20px;
 }
-.mat-panel-title{
-    display: flex;
 
+
+.assuntos {
+    display: flex;
     align-items: center;
     justify-content: center;
-    align-items: center;
-} */
+    margin-top: 10px;
+    font-family: Arial;
+    flex-direction: column;
+}
 
+p {
+    word-break: break-all;
+    word-wrap: break-word;
+    margin: 0 10px;
+}
+
+.paragrafo {
+    word-break: break-all;
+    word-wrap: break-word;
+    margin: 0 10px;
+    padding: 0;
+}
+
+.penas {}
+
+.example-full-width {
+    padding: 0 10px;
+}
+
+@media (max-width: 585px) {
+    .centralizar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+}
  
   .mat-expansion-panel-header-title, .mat-expansion-panel-header-description {
     display: flex;
