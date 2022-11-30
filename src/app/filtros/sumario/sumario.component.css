@@ -17,9 +17,18 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    margin-top: 20px;
+    margin-top: 40px;
+   
 }
 
+.containerInput{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 470px;
+   
+}
 
 .assuntos {
     display: flex;
@@ -56,6 +65,24 @@ p {
         justify-content: center;
         flex-direction: column;
     }
+
+    .containerInput{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+       
+    }
+}
+@media (max-width: 990px) {
+    .centralizar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    
 }
  
   .mat-expansion-panel-header-title, .mat-expansion-panel-header-description {

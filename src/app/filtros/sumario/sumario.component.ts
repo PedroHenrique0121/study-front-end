@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Artigo } from 'src/app/artigos/Artigo';
 import { Assunto } from 'src/app/assuntos/Assunto';
 import { Disciplina } from 'src/app/disciplinas/Disciplina';
+import { Pena } from 'src/app/penas/Pena';
 import { AssuntoService } from 'src/app/services/assunto.service';
 import { DisciplinaService } from 'src/app/services/disciplina.service';
 
@@ -13,6 +15,7 @@ import { DisciplinaService } from 'src/app/services/disciplina.service';
 export class SumarioComponent implements OnInit {
   panelOpenState = false;
   panelOpenStateAssunto = false;
+  formulario!: FormGroup
 
   disciplinas!: Disciplina[];
   disciplina!: Disciplina;
@@ -22,14 +25,21 @@ export class SumarioComponent implements OnInit {
   assuntoPesquisa!: string;
   artigos!: Artigo[];
 
+
+  pena!: Pena;
+
   constructor(private disciplinaService: DisciplinaService,
     private assuntoService: AssuntoService) {
     this.disciplina = new Disciplina()
-    this.assunto= new Assunto()
-    }
+    this.assunto = new Assunto()
+    this.pena = new Pena();
+  }
 
   ngOnInit(): void {
-
+         this.formulario = new FormGroup({
+        
+          categoria: new FormControl('', ),
+        });
   }
 
   buscarDisciplinaProDescricao() {
@@ -41,8 +51,8 @@ export class SumarioComponent implements OnInit {
 
   selecionarDisciplina(disciplina: Disciplina) {
     this.disciplina = disciplina;
-    this.assuntos=[]
-    this.assunto= new Assunto()
+    this.assuntos = []
+    this.assunto = new Assunto()
   }
 
   retornarTodasDisciplinaSemPaginacao() {
@@ -63,5 +73,9 @@ export class SumarioComponent implements OnInit {
     this.assunto = assunto;
   }
 
- 
+  selecionarCategoria(categoria: string){
+      console.log(categoria)
+  }
+
+
 }
