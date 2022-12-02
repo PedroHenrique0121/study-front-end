@@ -38,6 +38,7 @@ import { FiltrosModule } from './filtros/filtros.module';
     DialogComponent,
     SidebarComponent,
     NavComponent,
+    
     LayouteComponent,
   ],
   imports: [

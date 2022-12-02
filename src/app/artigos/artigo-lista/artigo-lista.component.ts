@@ -122,7 +122,7 @@ export class ArtigoListaComponent implements OnInit {
 
   setarIdTopicoLeiEscolhido(topicoLei: TopicoLei) {
     this.topicoLei = topicoLei;
-    this.artigoService.retornarRelacaoComTopicoLei(this.topicoLei.id)
+    this.artigoService.retornarRelacaoComTopicoLeiPaginado(this.topicoLei.id)
       .subscribe((response) => {
         this.artigoPage = response;
         this.artigos = this.artigoPage.content

@@ -3,7 +3,7 @@
     <div class="layoute">
         <div class="centralizar">
 
-            <div class="containerInput" >
+            <div class="containerInput">
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Selecione uma disciplina</mat-label>
                     <input type="text" matInput placeholder="Pesquise por uma disciplina..." [matAutocomplete]="auto"
@@ -36,39 +36,54 @@
 
             </div>
 
-            <div class="containerInput" >
+            <div class="containerInput">
                 <mat-form-field class="example-full-width" appearance="outline">
-                    <mat-label>Selecione um topico/lei</mat-label>
-                    <input type="text" matInput placeholder="Pesquise por uma lei..." [matAutocomplete]="topico"
-                        (ngModelChange)="disciplina" [(ngModel)]="disciplina.descricao">
+                    <mat-label>Selecione um assunto</mat-label>
+                    <input type="text" matInput placeholder="Pesquise por um topico ou Lei..." [matAutocomplete]="to"
+                        (ngModelChange)="buscarTopicoLeisRelacionadoAssunto()" [(ngModel)]="topicoLeiPesquisa">
                     <mat-icon matSuffix>search</mat-icon>
-                    <!-- <mat-error *ngIf="descricaoD?.hasError('required')">È necessario escolher uma disciplina</mat-error> -->
-                    <mat-autocomplete #topico="matAutocomplete">
+
+                    <mat-autocomplete #to="matAutocomplete">
                         <mat-option>--</mat-option>
-                        <mat-option (onSelectionChange)="selecionarDisciplina(disciplina)"
-                            *ngFor="let disciplina of disciplinas " [value]="disciplina.descricao">
-                            {{disciplina.descricao}}
+                        <mat-option (onSelectionChange)="selecionarTopicoLei(topicoLei)" *ngFor="let topicoLei of topicosLeis "
+                            [value]="topicoLei.descricao">
+                            {{topicoLei.descricao}}
                         </mat-option>
                     </mat-autocomplete>
                 </mat-form-field>
 
-                <mat-form-field class="example-full-width" appearance="outline">
-                  
-                    <mat-label>Selecione uma categoria da Pena</mat-label>
-                    <mat-select formControlName="categoria" [(ngModel)]="pena.categoria" >
-                        <mat-option value="Detenção">
-                            {{"Detenção"}}
+
+                <mat-form-field  class="example-full-width" appearance="outline">
+
+                    <mat-label>Selecione a categoria do artigo</mat-label>
+                    <mat-select [(ngModel)]="artigo.categoria">
+                        <mat-option value="Crime">
+                            {{"Crime"}}
                         </mat-option>
-                        <mat-option value="Reclusão">
-                            {{"Reclusão"}}
-                          </mat-option>
+                        <mat-option value="Infração Administrativa">
+                            {{"Infração Administrativa"}}
+                        </mat-option>
                     </mat-select>
-                  
-                    
-                  
+
                 </mat-form-field>
 
+               
+
             </div>
+
+            <mat-form-field *ngIf="artigo.categoria=='Crime'" class="example-full-width" appearance="outline">
+
+                <mat-label>Selecione a categoria da pena</mat-label>
+                <mat-select  [(ngModel)]="pena.categoria">
+                    <mat-option value="Detenção">
+                        {{"Detenção"}}
+                    </mat-option>
+                    <mat-option value="Reclusão">
+                        {{"Reclusão"}}
+                    </mat-option>
+                </mat-select>
+
+            </mat-form-field>
             <!-- <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Selecione um topico ou lei</mat-label>
                 <input type="text" matInput placeholder="Pesquise por um topico ou lei..." [matAutocomplete]="auto"

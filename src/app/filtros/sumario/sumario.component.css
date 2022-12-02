@@ -74,7 +74,7 @@ p {
        
     }
 }
-@media (max-width: 990px) {
+@media (max-width: 1170px) {
     .centralizar {
         display: flex;
         align-items: center;

@@ -18,9 +18,12 @@ export class ArtigoService {
     return this.httpcliente.put<Artigo>(environment.apiURL + `/artigos/editar/${artigo.id}`, artigo);
   }
 
-  retornarRelacaoComTopicoLei(id: number): Observable<ArtigoPage>{
-     return this.httpcliente.get<ArtigoPage>(environment.apiURL + `/artigos/topicoLei/${id}`);
+  retornarRelacaoComTopicoLei(id: number): Observable<Artigo[]>{
+     return this.httpcliente.get<Artigo[]>(environment.apiURL + `/artigos/topicoLei/${id}`);
   }
+  retornarRelacaoComTopicoLeiPaginado(id: number): Observable<ArtigoPage>{
+    return this.httpcliente.get<ArtigoPage>(environment.apiURL + `/artigos/topicoLei/${id}`);
+ }
 
   retornarPorDescricaoAssociadoTopicoLei(descricao: string, topicoLeiId: number, page: number, size: number): Observable<ArtigoPage> {
     return this.httpcliente.get<ArtigoPage>(environment.apiURL + `/artigos/search/pagination/${descricao}/${topicoLeiId}?size=${size}&page=${page}`);

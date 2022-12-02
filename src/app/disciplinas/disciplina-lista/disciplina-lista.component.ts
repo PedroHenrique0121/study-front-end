@@ -50,6 +50,7 @@ export class DisciplinaListaComponent implements OnInit {
 
   }
 
+  
   pegaMudancaPaginacao(pagina: PageEvent) {
     if (this.descricaoDisciplinaPesquisa === "") {
       this.statusPesquisaPorDescricao = false

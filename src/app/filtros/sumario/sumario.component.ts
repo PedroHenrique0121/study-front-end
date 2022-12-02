@@ -4,8 +4,11 @@ import { Artigo } from 'src/app/artigos/Artigo';
 import { Assunto } from 'src/app/assuntos/Assunto';
 import { Disciplina } from 'src/app/disciplinas/Disciplina';
 import { Pena } from 'src/app/penas/Pena';
+import { ArtigoService } from 'src/app/services/artigo.service';
 import { AssuntoService } from 'src/app/services/assunto.service';
 import { DisciplinaService } from 'src/app/services/disciplina.service';
+import { TopicoLeiServiceService } from 'src/app/services/topico-lei-service.service';
+import { TopicoLei } from 'src/app/topicos-leis/TopicoLei';
 
 @Component({
   selector: 'app-sumario',
@@ -23,23 +26,26 @@ export class SumarioComponent implements OnInit {
   assuntos!: Assunto[];
   assunto!: Assunto;
   assuntoPesquisa!: string;
+  topicoLei!: TopicoLei;
+  topicosLeis!: TopicoLei[];
+  topicoLeiPesquisa!: string;
   artigos!: Artigo[];
-
-
+  artigo!: Artigo;
   pena!: Pena;
 
   constructor(private disciplinaService: DisciplinaService,
-    private assuntoService: AssuntoService) {
+    private assuntoService: AssuntoService,
+    private artigoService: ArtigoService,
+    private topicoLeiService: TopicoLeiServiceService) {
     this.disciplina = new Disciplina()
     this.assunto = new Assunto()
+    this.topicoLei = new TopicoLei();
     this.pena = new Pena();
+    this.artigo = new Artigo();
   }
 
   ngOnInit(): void {
-         this.formulario = new FormGroup({
-        
-          categoria: new FormControl('', ),
-        });
+
   }
 
   buscarDisciplinaProDescricao() {
@@ -51,8 +57,14 @@ export class SumarioComponent implements OnInit {
 
   selecionarDisciplina(disciplina: Disciplina) {
     this.disciplina = disciplina;
-    this.assuntos = []
-    this.assunto = new Assunto()
+    this.assuntoPesquisa = ""
+    this.assunto = new Assunto();
+    this.assuntos = [];
+    this.topicoLei = new TopicoLei();
+    this.topicosLeis = [];
+    this.artigo = new Artigo();
+    this.artigos = [];
+    this.pena = new Pena();
   }
 
   retornarTodasDisciplinaSemPaginacao() {
@@ -71,11 +83,37 @@ export class SumarioComponent implements OnInit {
 
   selecionarAssunto(assunto: Assunto) {
     this.assunto = assunto;
+    this.artigo = new Artigo();
+    this.artigos = [];
+    this.topicoLei = new TopicoLei();
+    this.topicosLeis = [];
+    this.topicoLeiPesquisa= ""
+    this.pena = new Pena();
   }
 
-  selecionarCategoria(categoria: string){
-      console.log(categoria)
+  selecionarCategoria(categoria: string) {
+    console.log(categoria)
   }
 
+  buscarTopicoLeisRelacionadoAssunto() {
+    this.topicoLeiService.retornarPorDescricaoVinculadoAssunto(this.topicoLeiPesquisa, this.assunto.id)
+      .subscribe(response => {
+        this.topicosLeis = response;
+      })
+  }
+
+  selecionarTopicoLei(topicoLei: TopicoLei) {
+    this.topicoLei = topicoLei;
+    this.pena = new Pena();
+    this.artigo = new Artigo();
+    
+  }
+
+  buscarArtigosRelacionadosLei() {
+    this.artigoService.retornarRelacaoComTopicoLei(this.topicoLei.id)
+     .subscribe(response => {
+        this.artigos= response;
+     })
+  }
 
 }

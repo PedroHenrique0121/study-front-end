@@ -67,6 +67,8 @@ export class DisciplinaEdicaoComponent implements OnInit {
     } else {
       this.router.navigate(["/disciplinas/lista"])
 
+
+      
     }
   }
 

@@ -30,6 +30,10 @@ export class TopicoLeiServiceService {
   retornarTodosSempaginacao(): Observable<TopicoLei[]> {
     return this.httpcliente.get<TopicoLei[]>(environment.apiURL + `/topicosLeis`);
   }
+ 
+  retornarPorDescricaoVinculadoAssunto(descricao:string, id: number): Observable<TopicoLei[]>{
+    return this.httpcliente.get<TopicoLei[]>(environment.apiURL + `/topicosLeis/${descricao}/assunto/${id}`);
+  }
 
   retornarTodos(page: number, size:number): Observable<TopicoLeiPage> {
     return this.httpcliente.get<TopicoLeiPage>(environment.apiURL + `/topicosLeis/pagination?size=${size}&page=${page}`);
