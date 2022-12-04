@@ -5,11 +5,11 @@
         <form [formGroup]="formulario" #formDir="ngForm" class="example-form" (ngSubmit)="onSubmit()">
 
             <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Selecione por um topico ou Lei</mat-label>
+                <mat-label>Selecione  um topico ou Lei</mat-label>
                 <input type="text" placeholder="Pesquise por um topico ou lei" matInput formControlName="descricaoTopicoLei" [matAutocomplete]="auto"
                     (ngModelChange)="buscarTopicoLeiPorDescricao()" [(ngModel)]="descricaoTopicoLeiPesquisa">
                 <mat-icon matSuffix>search</mat-icon>
-                <!-- <mat-error *ngIf="descricaoD?.hasError('required')">È necessario escolher uma disciplina</mat-error> -->
+               
                 <mat-autocomplete #auto="matAutocomplete">
                     <mat-option>--</mat-option>
                     <mat-option (onSelectionChange)="setarIdTopicoLeiEscolhido(topicoLei.id,topicoLei.descricao)"
@@ -17,7 +17,7 @@
                         {{topicoLei.descricao}}
                     </mat-option>
                 </mat-autocomplete>
-
+                
             </mat-form-field>
             <p>Topico/Lei escolhido : <strong>{{descricaoTopicoLei}}</strong></p>
 
@@ -29,7 +29,7 @@
                     Descricao is <strong>required</strong>
                 </mat-error>
             </mat-form-field>
-
+           
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label> Numero do artigo </mat-label>
                 <input matInput  formControlName="numero" [(ngModel)]="artigo.numero"
@@ -41,11 +41,22 @@
             </mat-form-field>
             
             <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label> Categoria do artigo </mat-label>
-                <input matInput formControlName="categoria" [(ngModel)]="artigo.categoria"
-                    placeholder="Informe a categoria do artigo">
+              
+                <mat-label>Selecione a categoria do artigo</mat-label>
+                <mat-select matInput formControlName="categoria"  [(ngModel)]="artigo.categoria">
+                    <mat-option value="" >--</mat-option>
+                    <mat-option value="Crime">
+                        {{"Crime"}}
+                    </mat-option>
+                    <mat-option value="Infração Administrativa">
+                        {{"Infração Administrativa"}}
+                    </mat-option>
+                    <mat-option value="Disposição Geral">
+                        {{"Disposição Geral"}}
+                    </mat-option>
+                </mat-select>
                 <mat-error *ngIf="descricao?.hasError('required') ">
-                    Descricao is <strong>required</strong>
+                    categoria is <strong>required</strong>
                 </mat-error>
                 
             </mat-form-field>

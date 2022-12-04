@@ -51,9 +51,7 @@
             <mat-error *ngIf="descricao?.hasError('required') ">
                 Artigo is <strong>required</strong>
             </mat-error>
-            <!-- <mat-error *ngIf="descricao?.hasError('minlength') ">
-                Disciplina is <strong>minLength 3 caracteres</strong>
-            </mat-error> -->
+           
         </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="outline">
@@ -67,13 +65,22 @@
         </mat-form-field>
         
         <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label> Categoria do artigo </mat-label>
-            <input matInput formControlName="categoria" [(ngModel)]="artigo.categoria"
-                placeholder="Informe a categoria do artigo">
-            <mat-error *ngIf="descricao?.hasError('required') ">
-                Descricao is <strong>required</strong>
-            </mat-error>
-            
+            <mat-label>Selecione a categoria do artigo</mat-label>
+                <mat-select matInput formControlName="categoria"  [(ngModel)]="artigo.categoria">
+                    <mat-option value="" >--</mat-option>
+                    <mat-option value="Crime">
+                        {{"Crime"}}
+                    </mat-option>
+                    <mat-option value="Infração Administrativa">
+                        {{"Infração Administrativa"}}
+                    </mat-option>
+                    <mat-option value="Disposição Geral">
+                        {{"Disposição Geral"}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="categoria?.hasError('required') ">
+                    Descricao is <strong>required</strong>
+                </mat-error>
         </mat-form-field>
         
         <button mat-raised-button [ngStyle]="{marginRight:'10px', marginBottom:'4px'}"

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Artigo } from 'src/app/artigos/Artigo';
+import { MatOptionSelectionChange } from '@angular/material/core';
+import { PageEvent } from '@angular/material/paginator';
+import { Artigo, ArtigoPage } from 'src/app/artigos/Artigo';
 import { Assunto } from 'src/app/assuntos/Assunto';
 import { Disciplina } from 'src/app/disciplinas/Disciplina';
 import { Pena } from 'src/app/penas/Pena';
@@ -9,6 +11,7 @@ import { AssuntoService } from 'src/app/services/assunto.service';
 import { DisciplinaService } from 'src/app/services/disciplina.service';
 import { TopicoLeiServiceService } from 'src/app/services/topico-lei-service.service';
 import { TopicoLei } from 'src/app/topicos-leis/TopicoLei';
+
 
 @Component({
   selector: 'app-sumario',
@@ -29,6 +32,7 @@ export class SumarioComponent implements OnInit {
   topicoLei!: TopicoLei;
   topicosLeis!: TopicoLei[];
   topicoLeiPesquisa!: string;
+  artigoPage!: ArtigoPage;
   artigos!: Artigo[];
   artigo!: Artigo;
   pena!: Pena;
@@ -42,6 +46,7 @@ export class SumarioComponent implements OnInit {
     this.topicoLei = new TopicoLei();
     this.pena = new Pena();
     this.artigo = new Artigo();
+    
   }
 
   ngOnInit(): void {
@@ -62,6 +67,7 @@ export class SumarioComponent implements OnInit {
     this.assuntos = [];
     this.topicoLei = new TopicoLei();
     this.topicosLeis = [];
+    this.topicoLeiPesquisa=""
     this.artigo = new Artigo();
     this.artigos = [];
     this.pena = new Pena();
@@ -91,10 +97,6 @@ export class SumarioComponent implements OnInit {
     this.pena = new Pena();
   }
 
-  selecionarCategoria(categoria: string) {
-    console.log(categoria)
-  }
-
   buscarTopicoLeisRelacionadoAssunto() {
     this.topicoLeiService.retornarPorDescricaoVinculadoAssunto(this.topicoLeiPesquisa, this.assunto.id)
       .subscribe(response => {
@@ -104,16 +106,39 @@ export class SumarioComponent implements OnInit {
 
   selecionarTopicoLei(topicoLei: TopicoLei) {
     this.topicoLei = topicoLei;
-    this.pena = new Pena();
     this.artigo = new Artigo();
-    
+    this.pena = new Pena();
+    this.buscarArtigosRelacionadosTopicoLei();
+    console.log(this.artigos)
   }
 
-  buscarArtigosRelacionadosLei() {
-    this.artigoService.retornarRelacaoComTopicoLei(this.topicoLei.id)
+  buscarArtigosRelacionadosTopicoLei() {
+    this.artigoService.retornarRelacaoComTopicoLeiPaginado(this.topicoLei.id)
      .subscribe(response => {
-        this.artigos= response;
+        this.artigoPage= response
+        this.artigos= this.artigoPage.content;
      })
+  }
+
+  pegaMudancaPaginacao(evento: PageEvent){
+    this.artigoService.retornarRelacaoComTopicoLeiPaginado(this.topicoLei.id).
+      subscribe(response => {
+        this.artigoPage = response
+        this.artigos = this.artigoPage.content
+      })
+  }
+ 
+  selecionarCategoriaArtigo(categoria: string) {
+    this.pena.categoria = categoria;
+    console.log(this.pena.categoria)
+  }
+
+  sec(cat: MatOptionSelectionChange){
+      console.log(cat.source.value)
+  }
+
+  selecionarCategoriaPena(categoria:string) {
+   console.log(categoria)
   }
 
 }

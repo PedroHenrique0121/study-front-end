@@ -20,7 +20,6 @@ export class TopicoLeiServiceService {
 
   retornarPorDescricao(descricao: string, page:number, size:number):Observable<TopicoLeiPage>{
     return this.httpcliente.get<TopicoLeiPage>(environment.apiURL+ `/topicosLeis/search/pagination/${descricao}?size=${size}&page=${page}`);
-
   }
 
   retornarPorDescricaoSemPaginacao(descricao: string): Observable<TopicoLei[]> {

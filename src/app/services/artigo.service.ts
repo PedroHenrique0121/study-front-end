@@ -21,8 +21,10 @@ export class ArtigoService {
   retornarRelacaoComTopicoLei(id: number): Observable<Artigo[]>{
      return this.httpcliente.get<Artigo[]>(environment.apiURL + `/artigos/topicoLei/${id}`);
   }
+  
   retornarRelacaoComTopicoLeiPaginado(id: number): Observable<ArtigoPage>{
-    return this.httpcliente.get<ArtigoPage>(environment.apiURL + `/artigos/topicoLei/${id}`);
+    console.log(`/artigos/topicoLei/${id}`);
+    return this.httpcliente.get<ArtigoPage>(environment.apiURL + `/artigos/pagination/topicoLei/${id}`);
  }
 
   retornarPorDescricaoAssociadoTopicoLei(descricao: string, topicoLeiId: number, page: number, size: number): Observable<ArtigoPage> {
