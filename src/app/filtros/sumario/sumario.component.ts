@@ -112,7 +112,7 @@ export class SumarioComponent implements OnInit {
   }
 
   buscarArtigosRelacionadosTopicoLei(page?: number, size?: number) {
-    this.artigoService.retornarRelacaoComTopicoLeiPaginado(this.topicoLei, page? page: 0, size ? size : 7)
+    this.artigoService.retornarRelacaoComTopicoLeiPaginado(this.topicoLei, page? page: 0, size ? size : 3)
       .subscribe(response => {
         this.artigoPage = response
         this.artigos = this.artigoPage.content;
@@ -122,13 +122,13 @@ export class SumarioComponent implements OnInit {
   pegaMudancaPaginacao(evento: PageEvent) {
 
     if (this.artigo.categoria != undefined && this.pena.categoria != undefined) {
-      this.buscarPorRelacaoTopicoLeiEPenaCategoria(evento.pageIndex, evento.pageSize);
+      this.buscarPorCatoriaRelacaoTopicoLeiIEPenaCategoria(evento.pageIndex, evento.pageSize);
     }
     else if (this.artigo.categoria != undefined && this.pena.categoria == undefined) {
       this.buscarPorCategoriaERelacaoComTopicoLei(evento.pageIndex, evento.pageSize);
     }
     else if (this.artigo.categoria == undefined && this.pena.categoria != undefined) {
-      this.buscarPorRelacaoTopicoLeiEPenaCategoria(evento.pageIndex, evento.pageSize);
+      this.buscarPorCatoriaRelacaoTopicoLeiIEPenaCategoria(evento.pageIndex, evento.pageSize);
     }
     else {
       console.log(evento.pageIndex, evento.pageSize)
@@ -139,16 +139,28 @@ export class SumarioComponent implements OnInit {
   selecionarCategoriaArtigo(categoria: string) {
     this.artigo.categoria = categoria;
     this.pena = new Pena();
-    this.buscarPorCategoriaERelacaoComTopicoLei();
+    if(this.artigo.categoria== undefined){
+      console.log("categria a vaiza ")
+      this.buscarArtigosRelacionadosTopicoLei();
+    }else{
+      this.buscarPorCategoriaERelacaoComTopicoLei();
+    }
+   
   }
 
   selecionarCategoriaPena(categoria: string) {
     this.pena.categoria = categoria;
-    this.buscarPorRelacaoTopicoLeiEPenaCategoria()
+    if(this.pena.categoria== undefined){
+      console.log("categria p vaiza ")
+      this.buscarPorCategoriaERelacaoComTopicoLei();
+    }else{
+      this.buscarPorCatoriaRelacaoTopicoLeiIEPenaCategoria()
+    }
+    
   }
 
-  buscarPorRelacaoTopicoLeiEPenaCategoria(page?: number, size?: number) {
-    this.artigoService.retornarPorVinculoComTopicoLeiEPelaCategoriaDaPena(this.topicoLei, this.pena, page ? page : 0, size ? size : 7)
+  buscarPorCatoriaRelacaoTopicoLeiIEPenaCategoria(page?: number, size?: number) {
+    this.artigoService.retornarPorCategoriaVinculoComTopicoLeiEPelaCategoriaDaPena(this.topicoLei, this.artigo, this.pena, page ? page : 0, size ? size : 3)
       .subscribe(response => {
         this.artigoPage = response;
         this.artigos = this.artigoPage.content
@@ -156,7 +168,7 @@ export class SumarioComponent implements OnInit {
   }
 
   buscarPorCategoriaERelacaoComTopicoLei(page?: number, size?: number) {
-    this.artigoService.retornarPorCategoriaAssociadoTopicoLei(this.artigo, this.topicoLei, page ? page : 0, size ? size : 7)
+    this.artigoService.retornarPorCategoriaAssociadoTopicoLei(this.artigo, this.topicoLei, page ? page : 0, size ? size : 3)
       .subscribe(response => {
         this.artigoPage = response;
         this.artigos = this.artigoPage.content

@@ -44,9 +44,9 @@ export class ArtigoService {
     return this.httpcliente.get<Artigo[]>(environment.apiURL + `/artigos`);
   }
 
-  retornarPorVinculoComTopicoLeiEPelaCategoriaDaPena(topicoLei:TopicoLei, pena: Pena, page:number, size:number) : Observable<ArtigoPage>{
+  retornarPorCategoriaVinculoComTopicoLeiEPelaCategoriaDaPena(topicoLei:TopicoLei, artigo:Artigo, pena: Pena, page:number, size:number) : Observable<ArtigoPage>{
     console.log(`/artigos/pagination/topicoLei/${topicoLei.id}/pena/${pena.categoria}`)
-    return this.httpcliente.get<ArtigoPage>(environment.apiURL +`/artigos/pagination/topicoLei/${topicoLei.id}/pena/${pena.categoria}?size=${size}&page=${page}`);
+    return this.httpcliente.get<ArtigoPage>(environment.apiURL +`/artigos/pagination/categoria/${artigo.categoria}/topicoLei/${topicoLei.id}/pena/${pena.categoria}`);
   }
 
   retornarTodos(page: number, size: number): Observable<ArtigoPage> {

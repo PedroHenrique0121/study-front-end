@@ -101,7 +101,7 @@ export class ArtigoListaComponent implements OnInit {
   }
 
   buscarPorDescricao(page?: number, size?: number) {
-    this.artigoService.retornarPorDescricaoAssociadoTopicoLei(this.descricaoArtigoPesquisa, this.topicoLei.id, page ? page : 0, size ? size : 7)
+    this.artigoService.retornarPorDescricaoAssociadoTopicoLei(this.descricaoArtigoPesquisa, this.topicoLei.id, page ? page : 0, size ? size : 3)
       .subscribe(response => {
         this.artigoPage = response
         this.artigos = this.artigoPage.content
@@ -122,7 +122,7 @@ export class ArtigoListaComponent implements OnInit {
 
   setarTopicoLeiEscolhido(topicoLei: TopicoLei, page?: number,size?: number) {
     this.topicoLei = topicoLei;
-    this.artigoService.retornarRelacaoComTopicoLeiPaginado(this.topicoLei, page? page: 0, size? size: 7)
+    this.artigoService.retornarRelacaoComTopicoLeiPaginado(this.topicoLei, page? page: 0, size? size: 3)
       .subscribe((response) => {
         this.artigoPage = response
         this.artigos = this.artigoPage.content;
@@ -142,6 +142,8 @@ export class ArtigoListaComponent implements OnInit {
           }
         }
         )
+
+        this.setarTopicoLeiEscolhido(this.topicoLei,this.artigoPage.number);
       }, errorResponse => {
         this.matDialog.open(DialogComponent, {
           disableClose: true,

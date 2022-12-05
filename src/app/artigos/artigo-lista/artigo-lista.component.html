@@ -78,8 +78,8 @@
         </div>
     </div>
 
-    <mat-paginator [length]="artigoPage?artigoPage.totalElements: 7" [disabled]=""
-        [pageSizeOptions]="[7, 10, (artigoPage?artigoPage.totalElements: 30 /2)]" (page)="pegaMudancaPaginacao($event)"
+    <mat-paginator [length]="artigoPage?artigoPage.totalElements: 3" [disabled]=""
+        [pageSizeOptions]="[3, 10, (artigoPage?artigoPage.totalElements: 30 /2)]" (page)="pegaMudancaPaginacao($event)"
         aria-label="Select page">
     </mat-paginator>
 

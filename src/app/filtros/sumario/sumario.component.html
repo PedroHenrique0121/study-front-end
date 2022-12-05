@@ -95,6 +95,11 @@
             <strong>{{this.topicoLei.descricao}}</strong>
         </h1>
 
+        <h1>
+            <strong>{{this.artigo.categoria}}</strong>
+        </h1>
+
+
         <div class="artigos" *ngFor="let artigo of artigos">
             <p>
                 {{artigo.numero}} {{"º - "}} {{artigo.descricao}}
@@ -113,7 +118,7 @@
     <mat-paginator [length]="artigoPage?artigoPage.totalElements: 3" [disabled]=""
         [pageSizeOptions]="[3, 10, (artigoPage?artigoPage.totalElements: 30 /2)]" (page)="pegaMudancaPaginacao($event)"
         aria-label="Select page"
-        [pageSize]="artigoPage?artigoPage.totalElements:3"
+       
         >
     </mat-paginator>
 
