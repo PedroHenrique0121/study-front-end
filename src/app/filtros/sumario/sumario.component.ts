@@ -41,12 +41,12 @@ export class SumarioComponent implements OnInit {
     private assuntoService: AssuntoService,
     private artigoService: ArtigoService,
     private topicoLeiService: TopicoLeiServiceService) {
-    this.disciplina = new Disciplina()
-    this.assunto = new Assunto()
+    this.disciplina = new Disciplina();
+    this.assunto = new Assunto();
     this.topicoLei = new TopicoLei();
     this.pena = new Pena();
     this.artigo = new Artigo();
-    
+
   }
 
   ngOnInit(): void {
@@ -67,7 +67,7 @@ export class SumarioComponent implements OnInit {
     this.assuntos = [];
     this.topicoLei = new TopicoLei();
     this.topicosLeis = [];
-    this.topicoLeiPesquisa=""
+    this.topicoLeiPesquisa = ""
     this.artigo = new Artigo();
     this.artigos = [];
     this.pena = new Pena();
@@ -93,7 +93,7 @@ export class SumarioComponent implements OnInit {
     this.artigos = [];
     this.topicoLei = new TopicoLei();
     this.topicosLeis = [];
-    this.topicoLeiPesquisa= ""
+    this.topicoLeiPesquisa = ""
     this.pena = new Pena();
   }
 
@@ -109,36 +109,58 @@ export class SumarioComponent implements OnInit {
     this.artigo = new Artigo();
     this.pena = new Pena();
     this.buscarArtigosRelacionadosTopicoLei();
-    console.log(this.artigos)
   }
 
-  buscarArtigosRelacionadosTopicoLei() {
-    this.artigoService.retornarRelacaoComTopicoLeiPaginado(this.topicoLei.id)
-     .subscribe(response => {
-        this.artigoPage= response
-        this.artigos= this.artigoPage.content;
-     })
-  }
-
-  pegaMudancaPaginacao(evento: PageEvent){
-    this.artigoService.retornarRelacaoComTopicoLeiPaginado(this.topicoLei.id).
-      subscribe(response => {
+  buscarArtigosRelacionadosTopicoLei(page?: number, size?: number) {
+    this.artigoService.retornarRelacaoComTopicoLeiPaginado(this.topicoLei, page? page: 0, size ? size : 7)
+      .subscribe(response => {
         this.artigoPage = response
+        this.artigos = this.artigoPage.content;
+      })
+  }
+
+  pegaMudancaPaginacao(evento: PageEvent) {
+
+    if (this.artigo.categoria != undefined && this.pena.categoria != undefined) {
+      this.buscarPorRelacaoTopicoLeiEPenaCategoria(evento.pageIndex, evento.pageSize);
+    }
+    else if (this.artigo.categoria != undefined && this.pena.categoria == undefined) {
+      this.buscarPorCategoriaERelacaoComTopicoLei(evento.pageIndex, evento.pageSize);
+    }
+    else if (this.artigo.categoria == undefined && this.pena.categoria != undefined) {
+      this.buscarPorRelacaoTopicoLeiEPenaCategoria(evento.pageIndex, evento.pageSize);
+    }
+    else {
+      console.log(evento.pageIndex, evento.pageSize)
+      this.buscarArtigosRelacionadosTopicoLei(evento.pageIndex, evento.pageSize);
+    }
+  }
+
+  selecionarCategoriaArtigo(categoria: string) {
+    this.artigo.categoria = categoria;
+    this.pena = new Pena();
+    this.buscarPorCategoriaERelacaoComTopicoLei();
+  }
+
+  selecionarCategoriaPena(categoria: string) {
+    this.pena.categoria = categoria;
+    this.buscarPorRelacaoTopicoLeiEPenaCategoria()
+  }
+
+  buscarPorRelacaoTopicoLeiEPenaCategoria(page?: number, size?: number) {
+    this.artigoService.retornarPorVinculoComTopicoLeiEPelaCategoriaDaPena(this.topicoLei, this.pena, page ? page : 0, size ? size : 7)
+      .subscribe(response => {
+        this.artigoPage = response;
         this.artigos = this.artigoPage.content
       })
   }
- 
-  selecionarCategoriaArtigo(categoria: string) {
-    this.pena.categoria = categoria;
-    console.log(this.pena.categoria)
-  }
 
-  sec(cat: MatOptionSelectionChange){
-      console.log(cat.source.value)
-  }
-
-  selecionarCategoriaPena(categoria:string) {
-   console.log(categoria)
+  buscarPorCategoriaERelacaoComTopicoLei(page?: number, size?: number) {
+    this.artigoService.retornarPorCategoriaAssociadoTopicoLei(this.artigo, this.topicoLei, page ? page : 0, size ? size : 7)
+      .subscribe(response => {
+        this.artigoPage = response;
+        this.artigos = this.artigoPage.content
+      })
   }
 
 }

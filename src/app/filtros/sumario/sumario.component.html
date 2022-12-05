@@ -57,7 +57,7 @@
 
                     <mat-label>Selecione a categoria do artigo</mat-label>
                     <mat-select  (ngModelChange)="selecionarCategoriaArtigo($event)"  [(ngModel)]="artigo.categoria">
-                        <mat-option value="" >--</mat-option>
+                        <mat-option  >--</mat-option>
                         <mat-option value="Crime">
                             {{"Crime"}}
                         </mat-option>
@@ -73,7 +73,7 @@
             <mat-form-field *ngIf="artigo.categoria=='Crime' ||  artigo.categoria=='Infração Administrativa' " class="example-full-width" appearance="outline">
                 <mat-label>Selecione a categoria da pena</mat-label>
                 <mat-select (ngModelChange)="selecionarCategoriaPena($event)" [(ngModel)]="pena.categoria">
-                    <mat-option value="">--</mat-option>
+                    <mat-option >--</mat-option>
                     <mat-option  value="Detenção">
                         {{"Detenção"}}
                     </mat-option>
@@ -110,9 +110,11 @@
 
     </div>
 
-    <mat-paginator [length]="artigoPage?artigoPage.totalElements: 7" [disabled]=""
-        [pageSizeOptions]="[7, 10, (artigoPage?artigoPage.totalElements: 30 /2)]" (page)="pegaMudancaPaginacao($event)"
-        aria-label="Select page">
+    <mat-paginator [length]="artigoPage?artigoPage.totalElements: 3" [disabled]=""
+        [pageSizeOptions]="[3, 10, (artigoPage?artigoPage.totalElements: 30 /2)]" (page)="pegaMudancaPaginacao($event)"
+        aria-label="Select page"
+        [pageSize]="artigoPage?artigoPage.totalElements:3"
+        >
     </mat-paginator>
 
 </div>

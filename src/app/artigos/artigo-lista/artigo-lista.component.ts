@@ -120,12 +120,12 @@ export class ArtigoListaComponent implements OnInit {
       })
   }
 
-  setarIdTopicoLeiEscolhido(topicoLei: TopicoLei) {
+  setarTopicoLeiEscolhido(topicoLei: TopicoLei, page?: number,size?: number) {
     this.topicoLei = topicoLei;
-    this.artigoService.retornarRelacaoComTopicoLeiPaginado(this.topicoLei.id)
+    this.artigoService.retornarRelacaoComTopicoLeiPaginado(this.topicoLei, page? page: 0, size? size: 7)
       .subscribe((response) => {
-        this.artigoPage = response;
-        this.artigos = this.artigoPage.content
+        this.artigoPage = response
+        this.artigos = this.artigoPage.content;
       })
   }
 
