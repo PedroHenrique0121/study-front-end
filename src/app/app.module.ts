@@ -14,7 +14,7 @@ import { DialogComponent } from './componentes/dialog/dialog.component';
 import { SidebarComponent } from './componentes/sidebar/sidebar.component';
 import { NavComponent } from './componentes/nav/nav.component';
 import { LayouteComponent } from './componentes/layoute/layoute.component'
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { AssuntosModule } from './assuntos/assuntos.module';
 import { MatMenuModule } from '@angular/material/menu';
@@ -29,6 +29,9 @@ import { TopicosLeisModule } from './topicos-leis/topicos-leis.module';
 import { ArtigosModule } from './artigos/artigos.module';
 import { PenasModule } from './penas/penas.module';
 import { FiltrosModule } from './filtros/filtros.module';
+import { LoginModule } from './login/login.module';
+import { AuthService } from './services/auth.service';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 
 
@@ -53,6 +56,7 @@ import { FiltrosModule } from './filtros/filtros.module';
     ArtigosModule,
     PenasModule,
     FiltrosModule,
+    LoginModule,
     
     BrowserAnimationsModule,
     MatSliderModule,
@@ -69,8 +73,14 @@ import { FiltrosModule } from './filtros/filtros.module';
   ],
     
   providers: [
-   
+    AuthService,
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: TokenInterceptor,
+    //   multi: true
+    // }
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
